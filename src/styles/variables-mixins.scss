@@ -1,0 +1,136 @@
+$inter-font-family: 'Inter',
+sans-serif;
+$dm-font-family: 'DM Serif Display',
+serif;
+$merriweather-font-family: 'Merriweather',
+serif;
+$red_color        : #E9758A;
+$peach_color      : #FFF5EE;
+$light_peach_color: #FEFAFF;
+$pink_color       : #FF00C7;
+
+
+@mixin flex {
+    display: flex;
+}
+
+@mixin flex_center {
+    @include flex;
+    align-items: center;
+}
+
+@mixin flex_start {
+    @include flex;
+    align-items: flex-start;
+}
+
+@mixin flex_start_bet {
+    @include flex_start;
+    justify-content: space-between;
+}
+
+@mixin flex_start_end_col {
+    @include flex_start;
+    justify-content: flex-end;
+    flex-flow      : column;
+}
+
+@mixin flex_center_bet {
+    @include flex_center;
+    justify-content: space-between;
+}
+
+@mixin flex_center_center {
+    @include flex_center;
+    justify-content: center;
+}
+
+@mixin flex_center_bet_col {
+    @include flex_center_bet;
+    flex-flow: column;
+}
+
+@mixin hover_active {
+    transition: transform .4s;
+
+    @media (min-width: 992px) {
+        &:hover {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5), inset 0px -4px 0px rgba(0, 0, 0, 0.25);
+            transform : translateY(-5px);
+        }
+    }
+
+    &:active {
+        box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.25%);
+    }
+}
+
+@mixin border_radius {
+    box-sizing   : border-box;
+    border-radius: 15px;
+    border       : none;
+}
+
+@mixin button {
+    @include border_radius;
+    width      : 100%;
+    height     : 53px;
+    padding    : 0 24px;
+    font-size  : 18px;
+    font-weight: 700;
+    box-shadow : 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+@mixin yellow_button {
+    @include button;
+    background: #FFF7CC;
+}
+
+@mixin grey_button {
+    @include button;
+    background: #DCDCD9;
+}
+
+@mixin input_inset {
+    @include button;
+    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+}
+
+@mixin input_outset {
+    @include input_inset;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@mixin grid_state {
+    display        : grid;
+    grid-gap       : 30px;
+    justify-content: space-between;
+}
+
+@mixin h2_styles {
+    font-family: $dm-font-family;
+
+    @media (max-width: 991px) {
+        font-size    : 28px;
+        margin-bottom: 36px;
+    }
+
+    @media (min-width: 992px) {
+        font-size    : 28px;
+        margin-bottom: 36px;
+    }
+}
+
+
+@mixin h5_styles {
+    @media (max-width: 991px) {
+        font-size    : 14px;
+        margin-bottom: 24px;
+    }
+
+    @media (min-width: 992px) {
+        font-size    : 14px;
+        margin-bottom: 24px;
+    }
+}
