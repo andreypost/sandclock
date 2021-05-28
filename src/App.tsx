@@ -6,6 +6,7 @@ import {
     BrowserRouter as Router,
     Switch,
 } from 'react-router-dom'
+import Loader from './components/Loader'
 // import { ConnectedRouter } from 'connected-react-router';
 // import { Provider } from 'react-redux';
 // import { PersistGate } from 'redux-persist/integration/react';
@@ -28,7 +29,7 @@ const App = (): any => {
         // <PersistGate persistor={persistor} loading={<Loading />}>
         // <Router basename="/">
         <HashRouter basename="/">
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<Loader />}>
                 {/* <ConnectedRouter history={history}> */}
                 <Switch>
                     <Route path="/sale" component={Sale} />
