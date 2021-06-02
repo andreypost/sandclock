@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "firebase-tools": "^9.12.1",
     "i18next": "^20.2.2",
     "i18next-browser-languagedetector": "^6.1.1",
     "i18next-http-backend": "^1.2.2",

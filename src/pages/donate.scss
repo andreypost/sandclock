@@ -1,370 +1,367 @@
 @import '../styles/variables-mixins.scss';
 
-body {
-
-    .donatepage {
-        header {
-            .banner_text {
-                #orgsSearch {
-                    input {
-                        @include input_inset;
-                    }
+.donatepage {
+    header {
+        .banner_text {
+            #orgsSearch {
+                input {
+                    @include input_inset;
                 }
             }
         }
+    }
 
-        main {
-            .orgs {
-                background: $light_peach_color;
+    main {
+        .orgs {
+            background: $light_peach_color;
 
-                &_section {
-                    padding-top: 44px;
+            &_section {
+                padding-top: 44px;
 
-                    .suggestion {
-                        padding-bottom: 10px;
-                        white-space   : nowrap;
-                        overflow-x    : auto;
+                .suggestion {
+                    padding-bottom: 10px;
+                    white-space   : nowrap;
+                    overflow-x    : auto;
 
-                        h3 {
-                            display     : inline-block;
-                            box-sizing  : border-box;
-                            font-size   : 20px;
-                            font-weight : 400;
-                            margin-left : -1px;
-                            padding     : 5px 18px;
-                            border-right: 0.5px solid transparent;
-                            border-left : 0.5px solid transparent;
-                            opacity     : .5;
-                            transition  : opacity .6s, border-right .6s, border-left .6s;
+                    h3 {
+                        display     : inline-block;
+                        box-sizing  : border-box;
+                        font-size   : 20px;
+                        font-weight : 400;
+                        margin-left : -1px;
+                        padding     : 5px 18px;
+                        border-right: 0.5px solid transparent;
+                        border-left : 0.5px solid transparent;
+                        opacity     : .5;
+                        transition  : opacity .6s, border-right .6s, border-left .6s;
 
-                            &:first-child {
-                                padding-left: unset;
+                        &:first-child {
+                            padding-left: unset;
+                        }
+
+                        &:last-child {
+                            padding-right: unset;
+                        }
+
+                        @media (min-width: 992px) {
+                            &:hover {
+                                opacity: 1;
+                                cursor : pointer;
+                            }
+                        }
+
+                        &.active {
+                            opacity: 1;
+                            color  : $pink_color;
+                        }
+
+                        &.active:not(:first-child) {
+                            border-left: 0.5px solid #000000;
+                        }
+
+                        &.active:not(:last-child) {
+                            border-right: 0.5px solid #000000;
+                        }
+                    }
+                }
+
+                .orgs_container {
+                    height    : 568px;
+                    position  : relative;
+                    transition: height .2s;
+
+                    .boxes {
+                        position             : absolute;
+                        top                  : 26px;
+                        left                 : 0;
+                        right                : 0;
+                        display              : grid;
+                        grid-template-columns: auto auto auto;
+                        justify-content      : flex-start;
+                        gap                  : 37px 48px;
+                        padding-left         : 68px;
+                        padding-right        : 68px;
+                        opacity              : 0;
+                        z-index              : -9999;
+                        transition           : opacity .0s, z-index .0s;
+
+                        &.active {
+                            opacity   : 1;
+                            z-index   : unset;
+                            transition: z-index .2s, opacity .6s .2s;
+                        }
+
+                        .individual,
+                        .episode {
+                            @include flex_center_center;
+                            @include border_radius;
+                            width           : 236px;
+                            height          : 144px;
+                            text-align      : center;
+                            transition      : background-color .2s, transform .2s .1s;
+                            // transition   : border-image, border-width .2s .2s, transform .2s .2s;
+
+                            @media (min-width: 992px) {
+                                &:hover {
+                                    cursor: pointer;
+                                }
                             }
 
-                            &:last-child {
-                                padding-right: unset;
+                            h4 {
+                                font-family: $merriweather-font-family;
+                                font-size  : 22px;
+                                font-weight: 400;
+                            }
+                        }
+
+                        .individual {
+                            border          : 12px solid transparent;
+                            border-image    : url(../img/inlineSvg/rectangle_dashed_blur.svg) 12 round round;
+                            background-color: $light_peach_color;
+
+                            // @media (max-width: 991px) {
+                            //     &:active {
+                            //         transform   : scale(1.06);
+                            //         border-image: url(../img/inlineSvg/rectangle_solid_dashed.svg) 10 round round;
+                            //     }
+                            // }
+
+                            // @media (min-width: 992px) {
+                            &:hover {
+                                transform       : scale(1.02);
+                                border-image    : url(../img/inlineSvg/rectangle_solid_dashed.svg) 12 round round;
+                                background-color: #FFFFFF;
+                            }
+
+                            // }
+
+                            h4 {
+                                color: $pink_color;
+                            }
+                        }
+
+                        .episode {
+                            border    : 0.25px solid #FFF7CC;
+                            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                            background: #FFFFFF;
+                            position  : relative;
+
+                            &.active {
+                                background: #FEDEFF;
+                            }
+
+                            .info {
+                                position     : absolute;
+                                top          : 20px;
+                                right        : 20px;
+                                width        : 22px;
+                                height       : 22px;
+                                border-radius: 15px;
                             }
 
                             @media (min-width: 992px) {
                                 &:hover {
-                                    opacity: 1;
-                                    cursor : pointer;
-                                }
-                            }
-
-                            &.active {
-                                opacity: 1;
-                                color  : $pink_color;
-                            }
-
-                            &.active:not(:first-child) {
-                                border-left: 0.5px solid #000000;
-                            }
-
-                            &.active:not(:last-child) {
-                                border-right: 0.5px solid #000000;
-                            }
-                        }
-                    }
-
-                    .orgs_container {
-                        height    : 568px;
-                        position  : relative;
-                        transition: height .2s;
-
-                        .boxes {
-                            position             : absolute;
-                            top                  : 26px;
-                            left                 : 0;
-                            right                : 0;
-                            display              : grid;
-                            grid-template-columns: auto auto auto;
-                            justify-content      : flex-start;
-                            gap                  : 37px 48px;
-                            padding-left         : 68px;
-                            padding-right        : 68px;
-                            opacity              : 0;
-                            z-index              : -9999;
-                            transition           : opacity .0s, z-index .0s;
-
-                            &.active {
-                                opacity   : 1;
-                                z-index   : unset;
-                                transition: z-index .2s, opacity .6s .2s;
-                            }
-
-                            .individual,
-                            .episode {
-                                @include flex_center_center;
-                                @include border_radius;
-                                width           : 236px;
-                                height          : 144px;
-                                text-align      : center;
-                                transition      : background-color .2s, transform .2s .1s;
-                                // transition   : border-image, border-width .2s .2s, transform .2s .2s;
-
-                                @media (min-width: 992px) {
-                                    &:hover {
-                                        cursor: pointer;
-                                    }
-                                }
-
-                                h4 {
-                                    font-family: $merriweather-font-family;
-                                    font-size  : 22px;
-                                    font-weight: 400;
-                                }
-                            }
-
-                            .individual {
-                                border          : 12px solid transparent;
-                                border-image    : url(../img/inlineSvg/rectangle_dashed_blur.svg) 12 round round;
-                                background-color: $light_peach_color;
-
-                                // @media (max-width: 991px) {
-                                //     &:active {
-                                //         transform   : scale(1.06);
-                                //         border-image: url(../img/inlineSvg/rectangle_solid_dashed.svg) 10 round round;
-                                //     }
-                                // }
-
-                                // @media (min-width: 992px) {
-                                &:hover {
-                                    transform       : scale(1.02);
-                                    border-image    : url(../img/inlineSvg/rectangle_solid_dashed.svg) 12 round round;
-                                    background-color: #FFFFFF;
-                                }
-
-                                // }
-
-                                h4 {
-                                    color: $pink_color;
-                                }
-                            }
-
-                            .episode {
-                                border    : 0.25px solid #FFF7CC;
-                                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                                background: #FFFFFF;
-                                position  : relative;
-
-                                &.active {
                                     background: #FEDEFF;
                                 }
 
-                                .info {
-                                    position     : absolute;
-                                    top          : 20px;
-                                    right        : 20px;
-                                    width        : 22px;
-                                    height       : 22px;
-                                    border-radius: 15px;
-                                }
-
-                                @media (min-width: 992px) {
-                                    &:hover {
-                                        background: #FEDEFF;
-                                    }
-
-                                }
-
-                                &:active {
-                                    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            .allocation {
-                padding-top   : 38px;
-                padding-bottom: 36px;
-
-                >form {
-                    >section {
-                        display              : grid;
-                        grid-template-columns: auto auto auto;
-                        align-items          : center;
-                        margin-bottom        : 39px;
-
-                        >h4 {
-                            font-size: 20px;
-                        }
-
-                        .total_donate {
-                            font-size: 14px;
-
-                            span {
-                                display    : inline-block;
-                                min-width  : 44px;
-                                text-align : right;
-                                font-weight: 700;
-
-                                &.active {
-                                    color: $red_color
-                                }
-                            }
-                        }
-
-                        .yield {
-                            @include flex_center_bet;
-                            min-width: 175px;
-                            max-width: 175px;
-
-                            div {
-                                @include border_radius;
-                                width        : 54px;
-                                height       : 29px;
-                                padding      : 0;
-                                box-shadow   : inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-                                border-radius: 25px;
-                                background   : #CBE2D7;
-                                position     : relative;
-
-                                @media (min-width: 992px) {
-                                    cursor: pointer;
-                                }
-
-                                &.active::after {
-                                    left: 20px;
-                                }
-
-                                &::after {
-                                    content         : "";
-                                    position        : absolute;
-                                    left            : 0;
-                                    top             : 0;
-                                    width           : 34px;
-                                    height          : 29px;
-                                    border-radius   : 25px;
-                                    box-shadow      : 2px 2px 4px rgba(0, 0, 0, 0.15), inset 2px 2px 4px rgba(0, 0, 0, 0.1);
-                                    background-color: #58BF66;
-                                    transition      : left .4s;
-                                }
                             }
 
-                            p {
-                                font-size: 18px;
-                                position : relative;
-
-                                &::after {
-                                    position     : absolute;
-                                    left         : 0;
-                                    top          : 34px;
-                                    box-sizing   : border-box;
-                                    max-width    : 112px;
-                                    min-width    : 112px;
-                                    font-size    : 12px;
-                                    padding      : 7.5px;
-                                    border       : 0.5px solid rgba(0, 0, 0, 0.25);
-                                    box-shadow   : 2px 2px 4px rgba(0, 0, 0, 0.25);
-                                    border-radius: 10px;
-                                    background   : #FFFFFF;
-                                    z-index      : 999;
-                                }
-
-                                &:hover {
-                                    text-decoration: underline;
-                                    cursor         : pointer;
-
-                                    &::after {
-                                        content: attr(data-tooltip);
-                                    }
-                                }
+                            &:active {
+                                box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
                             }
-                        }
-                    }
-
-                    .allocation_container {
-                        display              : grid;
-                        grid-template-columns: auto auto auto;
-                        justify-content      : flex-start;
-                        gap                  : 24px;
-
-                        .donate_item {
-                            display         : none;
-                            align-items     : center;
-                            justify-content : space-between;
-                            box-sizing      : border-box;
-                            // max-width    : 296px;
-                            // min-width    : 296px;
-                            width           : 296px;
-                            height          : 53px;
-                            border-radius   : 30px;
-                            font-size       : 16px;
-                            font-weight     : 400;
-                            padding-left    : 50px;
-                            padding-right   : 17px;
-                            box-shadow      : 0px 4px 8px rgba(0, 0, 0, 0.25);
-                            background      : #FFFFFF;
-
-                            &.active {
-                                display: flex;
-                            }
-
-                            label {
-                                @include flex_center_center;
-                                width        : 88px;
-                                height       : 31px;
-                                border-radius: 30px;
-                                background   : linear-gradient(90deg, #FFD7D7 0%, #FEFFDF 100%);
-                                position     : relative;
-
-                                &::after {
-                                    content                : '%';
-                                    position               : absolute;
-                                    right                  : 12px;
-                                    font-size              : 18px;
-                                    background             : linear-gradient(90deg, #FF5C00 32.05%, #33FF00 68.38%);
-                                    -webkit-background-clip: text;
-                                    background-clip        : text;
-                                    -webkit-text-fill-color: transparent;
-                                    color                  : transparent;
-                                }
-
-                                input {
-                                    box-sizing             : border-box;
-                                    border                 : none;
-                                    width                  : 38px;
-                                    font-size              : 18px;
-                                    font-weight            : 400;
-                                    text-align             : center;
-                                    background             : linear-gradient(90deg, #FF5C00 32.05%, #33FF00 68.38%);
-                                    -webkit-background-clip: text;
-                                    -webkit-text-fill-color: $red_color;
-                                    background-clip        : text;
-                                    color                  : $red_color;
-                                    caret-color            : $red_color;
-                                }
-                            }
-                        }
-
-                    }
-
-                    button[type=submit] {
-                        @include button;
-                        display       : block;
-                        width         : 195px;
-                        margin        : 36px auto;
-                        font-size     : 24px;
-                        font-weight   : 400;
-                        background    : linear-gradient(90deg, #FFD7D7 0%, #FEFFDF 100%);
-                        pointer-events: none;
-                        opacity       : .5;
-
-                        &.active {
-                            opacity       : 1;
-                            pointer-events: unset;
                         }
                     }
                 }
             }
         }
 
+        .allocation {
+            padding-top   : 38px;
+            padding-bottom: 36px;
 
+            >form {
+                >section {
+                    display              : grid;
+                    grid-template-columns: auto auto auto;
+                    align-items          : center;
+                    margin-bottom        : 39px;
 
+                    >h4 {
+                        font-size: 20px;
+                    }
 
+                    .total_donate {
+                        font-size: 14px;
 
+                        span {
+                            display    : inline-block;
+                            min-width  : 44px;
+                            text-align : right;
+                            font-weight: 700;
+
+                            &.active {
+                                color: $red_color
+                            }
+                        }
+                    }
+
+                    .yield {
+                        @include flex_center_bet;
+                        min-width: 175px;
+                        max-width: 175px;
+
+                        div {
+                            @include border_radius;
+                            width        : 54px;
+                            height       : 29px;
+                            padding      : 0;
+                            box-shadow   : inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                            border-radius: 25px;
+                            background   : #CBE2D7;
+                            position     : relative;
+
+                            @media (min-width: 992px) {
+                                cursor: pointer;
+                            }
+
+                            &.active::after {
+                                left: 20px;
+                            }
+
+                            &::after {
+                                content         : "";
+                                position        : absolute;
+                                left            : 0;
+                                top             : 0;
+                                width           : 34px;
+                                height          : 29px;
+                                border-radius   : 25px;
+                                box-shadow      : 2px 2px 4px rgba(0, 0, 0, 0.15), inset 2px 2px 4px rgba(0, 0, 0, 0.1);
+                                background-color: #58BF66;
+                                transition      : left .4s;
+                            }
+                        }
+
+                        p {
+                            font-size: 18px;
+                            position : relative;
+
+                            &::after {
+                                position     : absolute;
+                                left         : 0;
+                                top          : 34px;
+                                box-sizing   : border-box;
+                                max-width    : 112px;
+                                min-width    : 112px;
+                                font-size    : 12px;
+                                padding      : 7.5px;
+                                border       : 0.5px solid rgba(0, 0, 0, 0.25);
+                                box-shadow   : 2px 2px 4px rgba(0, 0, 0, 0.25);
+                                border-radius: 10px;
+                                background   : #FFFFFF;
+                                z-index      : 999;
+                            }
+
+                            &:hover {
+                                text-decoration: underline;
+                                cursor         : pointer;
+
+                                &::after {
+                                    content: attr(data-tooltip);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .allocation_container {
+                    display              : grid;
+                    grid-template-columns: auto auto auto;
+                    justify-content      : flex-start;
+                    gap                  : 24px;
+
+                    .donate_item {
+                        display         : none;
+                        align-items     : center;
+                        justify-content : space-between;
+                        box-sizing      : border-box;
+                        // max-width    : 296px;
+                        // min-width    : 296px;
+                        width           : 296px;
+                        height          : 53px;
+                        border-radius   : 30px;
+                        font-size       : 16px;
+                        font-weight     : 400;
+                        padding-left    : 50px;
+                        padding-right   : 17px;
+                        box-shadow      : 0px 4px 8px rgba(0, 0, 0, 0.25);
+                        background      : #FFFFFF;
+
+                        &.active {
+                            display: flex;
+                        }
+
+                        label {
+                            @include flex_center_center;
+                            width        : 88px;
+                            height       : 31px;
+                            border-radius: 30px;
+                            background   : linear-gradient(90deg, #FFD7D7 0%, #FEFFDF 100%);
+                            position     : relative;
+
+                            &::after {
+                                content                : '%';
+                                position               : absolute;
+                                right                  : 12px;
+                                font-size              : 18px;
+                                background             : linear-gradient(90deg, #FF5C00 32.05%, #33FF00 68.38%);
+                                -webkit-background-clip: text;
+                                background-clip        : text;
+                                -webkit-text-fill-color: transparent;
+                                color                  : transparent;
+                            }
+
+                            input {
+                                box-sizing             : border-box;
+                                border                 : none;
+                                width                  : 38px;
+                                font-size              : 18px;
+                                font-weight            : 400;
+                                text-align             : center;
+                                background             : linear-gradient(90deg, #FF5C00 32.05%, #33FF00 68.38%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: $red_color;
+                                background-clip        : text;
+                                color                  : $red_color;
+                                caret-color            : $red_color;
+                            }
+                        }
+                    }
+
+                }
+
+                button[type=submit] {
+                    @include button;
+                    display       : block;
+                    width         : 195px;
+                    margin        : 36px auto;
+                    font-size     : 24px;
+                    font-weight   : 400;
+                    background    : linear-gradient(90deg, #FFD7D7 0%, #FEFFDF 100%);
+                    pointer-events: none;
+                    opacity       : .5;
+
+                    &.active {
+                        opacity       : 1;
+                        pointer-events: unset;
+                    }
+                }
+            }
+        }
     }
+
+
+
+
+
 }

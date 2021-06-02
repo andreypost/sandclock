@@ -175,7 +175,7 @@ const Home: React.FC = () => {
           </div>
           <div className="rolldown_arrow" onClick={() => setRoll('')}>
             <svg>
-              <use xlinkHref="#arrow_up"></use>
+              <use xlinkHref="#arrow"></use>
             </svg>
             <p>Go back</p>
           </div>
@@ -215,7 +215,7 @@ const Home: React.FC = () => {
           </div>
           <div className="rolldown_arrow" onClick={() => setRoll('')}>
             <svg>
-              <use xlinkHref="#arrow_up"></use>
+              <use xlinkHref="#arrow"></use>
             </svg>
             <p>Go back</p>
           </div>
@@ -264,7 +264,7 @@ const Home: React.FC = () => {
           </div>
           <div className="rolldown_arrow" onClick={() => setRoll('')}>
             <svg>
-              <use xlinkHref="#arrow_up"></use>
+              <use xlinkHref="#arrow"></use>
             </svg>
             <p>Go back</p>
           </div>

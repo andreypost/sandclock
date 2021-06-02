@@ -55,7 +55,7 @@ const Will: React.FC = (props, { data, commit }: Options) => {
       for await (const commit of getCommits('andreypost/sandclock-build')) {
         arr.unshift({ 'data': commit.commit.author.date.match(/\d\d\d\d\-\d\d\-\d\d/gi).join(''), 'commit': commit.commit.message })
       }
-      console.log(arr)
+      // console.log(arr)
       // setCommits(arr)
     }
     HandleCommits()

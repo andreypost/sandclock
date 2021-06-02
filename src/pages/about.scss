@@ -1,130 +1,128 @@
 @import '../styles/variables-mixins.scss';
 
-body {
-    .aboutpage {
-        main {
+.aboutpage {
+    main {
 
-            >article {
-                h5 {
-                    font-size    : 18px;
-                    display      : table;
-                    margin       : 0 auto 78px;
-                    padding      : 23px 60px;
-                    border       : 1px solid #000000;
-                    border-radius: 15px;
-                    text-align   : center;
+        >article {
+            h5 {
+                font-size    : 18px;
+                display      : table;
+                margin       : 0 auto 78px;
+                padding      : 23px 60px;
+                border       : 1px solid #000000;
+                border-radius: 15px;
+                text-align   : center;
 
-                    a {
-                        color: $red_color;
-                    }
+                a {
+                    color: $red_color;
                 }
             }
+        }
 
-            .aboutpage_faq {
-                margin-bottom: 36px;
+        .aboutpage_faq {
+            margin-bottom: 36px;
 
-                h2 {
-                    @include h2_styles;
-                }
+            h2 {
+                @include h2_styles;
+            }
 
-                article {
-                    min-height   : 56px;
-                    margin-bottom: 10px;
-                    // transition: height .5s;
-                    // height    : 0;
-                    // overflow  : hidden;
+            article {
+                min-height   : 56px;
+                margin-bottom: 10px;
+                // transition: height .5s;
+                // height    : 0;
+                // overflow  : hidden;
 
-                    &.active {
-                        h6 {
-                            background: #F8F9FE;
-
-                            svg {
-                                transform: rotate(180deg);
-                                opacity  : 1;
-                            }
-                        }
-
-                        >div {
-                            // max-height: 100vh;
-                            max-height: 350px;
-                            opacity   : 1;
-                            transition: opacity .1s, max-height .8s .1s;
-                        }
-                    }
-
+                &.active {
                     h6 {
-                        @include flex_center_bet;
-                        font-size    : 16px;
-                        padding      : 12px 20px 12px 60px;
-                        border-radius: 15px;
-                        border       : 1px solid rgba(0, 0, 0, 0.25);
-                        box-shadow   : 0px 4px 4px rgba(0, 0, 0, 0.25);
-                        background   : #FAFFFF;
-                        position     : relative;
-                        z-index      : 99;
-
-                        span {
-                            display           : -webkit-box;
-                            -webkit-box-orient: vertical;
-                            -webkit-line-clamp: 1;
-                            font-weight       : 400;
-                            margin-right      : auto;
-                            margin-left       : 10px;
-                            overflow          : hidden;
-                        }
+                        background: #F8F9FE;
 
                         svg {
-                            width     : 31px;
-                            height    : 30px;
-                            opacity   : 0.75;
-                            transform : rotate(90deg);
-                            transition: opacity, transform .4s;
-                        }
-
-                        @media (min-width: 992px) {
-                            &:hover {
-                                cursor    : pointer;
-                                background: #F8F9FE;
-                            }
+                            transform: rotate(180deg);
+                            opacity  : 1;
                         }
                     }
 
                     >div {
-                        max-height                                       : 0;
-                        overflow                                         : hidden;
-                        margin-top                                       : -30px;
-                        border-radius                                    : 15px;
-                        box-shadow                                       : 0px 4px 4px rgba(0, 0, 0, 0.25);
-                        background                                       : #F8F8F8;
-                        opacity                                          : 0;
-                        // transition                                    : all .4s ease-in-out;
-                        transition                                       : max-height .8s, opacity .1s .8s;
+                        // max-height: 100vh;
+                        max-height: 350px;
+                        opacity   : 1;
+                        transition: opacity .1s, max-height .8s .1s;
+                    }
+                }
 
-                        p {
-                            font-size    : 16px;
-                            line-height  : 23px;
-                            margin-bottom: 10px;
-                            padding-right: 45px;
-                            padding-left : 60px;
-                            position     : relative;
-                            z-index      : 9;
+                h6 {
+                    @include flex_center_bet;
+                    font-size    : 16px;
+                    padding      : 12px 20px 12px 60px;
+                    border-radius: 15px;
+                    border       : 1px solid rgba(0, 0, 0, 0.25);
+                    box-shadow   : 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    background   : #FAFFFF;
+                    position     : relative;
+                    z-index      : 99;
 
-                            &::first-letter {
-                                font-weight : 700;
-                                margin-right: 10px;
-                            }
+                    span {
+                        display           : -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                        font-weight       : 400;
+                        margin-right      : auto;
+                        margin-left       : 10px;
+                        overflow          : hidden;
+                    }
 
-                            &:first-child {
-                                padding-top: 40px;
-                            }
+                    svg {
+                        width     : 31px;
+                        height    : 30px;
+                        opacity   : 0.75;
+                        transform : rotate(90deg);
+                        transition: opacity, transform .4s;
+                    }
 
-                            &:last-child {
-                                padding-bottom: 10px;
-                            }
+                    @media (min-width: 992px) {
+                        &:hover {
+                            cursor    : pointer;
+                            background: #F8F9FE;
+                        }
+                    }
+                }
 
-                            a {
-                                color: $red_color;
-                            }
+                >div {
+                    max-height                                       : 0;
+                    overflow                                         : hidden;
+                    margin-top                                       : -30px;
+                    border-radius                                    : 15px;
+                    box-shadow                                       : 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    background                                       : #F8F8F8;
+                    opacity                                          : 0;
+                    // transition                                    : all .4s ease-in-out;
+                    transition                                       : max-height .8s, opacity .1s .8s;
+
+                    p {
+                        font-size    : 16px;
+                        line-height  : 23px;
+                        margin-bottom: 10px;
+                        padding-right: 45px;
+                        padding-left : 60px;
+                        position     : relative;
+                        z-index      : 9;
+
+                        &::first-letter {
+                            font-weight : 700;
+                            margin-right: 10px;
+                        }
+
+                        &:first-child {
+                            padding-top: 40px;
+                        }
+
+                        &:last-child {
+                            padding-bottom: 10px;
+                        }
+
+                        a {
+                            color: $red_color;
                         }
                     }
                 }

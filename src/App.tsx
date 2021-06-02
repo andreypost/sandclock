@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {
     Route,
     HashRouter,
-    BrowserRouter as Router,
+    // BrowserRouter as Router,
     Switch,
 } from 'react-router-dom'
 import Loader from './components/Loader'
