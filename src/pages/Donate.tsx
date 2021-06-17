@@ -7,7 +7,7 @@ import InfoModal from '../infoModal/InfoModal';
 import { useAppDispatch } from '../utils/hooks';
 import { unsetInfoModal, retrieveInfoModal, typeInfoModal, fieldInfoModal, succsessInfoModal, errorInfoModal, exceedInfoModal, sentInfoModal } from '../infoModal';
 
-// fetch from server
+// mock fetch server
 const dbSuggestions = JSON.parse(JSON.stringify([
   {
     header: 'Suggestions',
