@@ -6,6 +6,9 @@ import Banner from '../components/Banner'
 import InfoModal from '../infoModal/InfoModal';
 import { useAppDispatch } from '../utils/hooks';
 import { unsetInfoModal, retrieveInfoModal, typeInfoModal, fieldInfoModal, succsessInfoModal, errorInfoModal, exceedInfoModal, sentInfoModal } from '../infoModal';
+import info_circle from '../img/svg/info_circle.svg'
+import ogr_info_dog from '../img/svg/ogr_info_dog.svg'
+
 
 // mock fetch server
 const dbSuggestions = JSON.parse(JSON.stringify([
@@ -346,12 +349,10 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
                   </div>
                   {obj.orgs.map((orgs) =>
                     <div className="episode" key={orgs.title} data-index={boxIndex++} data-title={orgs.title} data-type={orgs.type} data-mission={orgs.mission} onClick={handleEpisodesInputs}>
-                      <svg className="info" onClick={e => {
+                      <img src={info_circle} alt="" className="info" onClick={e => {
                         const episode = e.currentTarget.closest<HTMLDivElement>('.episode')
                         setOrgInfoOverlay({ value: { title: episode?.dataset.title, type: episode?.dataset.type, mission: episode?.dataset.mission }, class: 'active' })
-                      }}>
-                        <use xlinkHref="#info_circle"></use>
-                      </svg>
+                      }} />
                       <h4>{orgs.title}</h4>
                     </div>
                   )}
@@ -441,9 +442,7 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
       <div className={'modal orginfo ' + orgInfoOverlay.class} onClick={e => { if (e.target === e.currentTarget) setOrgInfoOverlay({ value: { title: '', type: '', mission: '' }, class: '' }) }}>
         <div>
           <div className="orginfo_header">
-            <svg>
-              <use xlinkHref="#ogr_info_dog"></use>
-            </svg>
+            <img src={ogr_info_dog} alt="" />
             <h3>{orgInfoOverlay.value.title}</h3>
           </div>
           <article className="orginfo_article">

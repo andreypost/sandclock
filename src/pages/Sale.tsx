@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import { User } from '../App'
-// import Counter from '../counter/InfoModal'
 
 const Sale: React.FC = () => {
   const [opacity, setPageView] = useState('')
@@ -18,7 +17,6 @@ const Sale: React.FC = () => {
         <Nav />
       </header>
       <main className="section" style={{ marginTop: '180px' }}>
-        {/* <Counter /> */}
       </main>
     </div>
   )

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './will.scss'
 import Nav from '../components/Nav'
+import circle from '../img/svg/circle.svg'
+import line from '../img/svg/line.svg'
 // import { useAppDispatch, useAppSelector } from '../utils/hooks'
 // import { increment, selectCount, setTextInput } from '../counter/counterSlice'
 
@@ -129,87 +131,61 @@ const Will: React.FC = (props, { data, commit }: Options) => {
           <ul>
 
             <li className="circle active">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Basics</p>
             </li>
 
             <li className="line">
-              <svg>
-                <use xlinkHref="#line"></use>
-              </svg>
+              <img src={line} alt="" />
             </li>
 
             <li className="circle">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Nominees</p>
             </li>
 
             <li className="line">
-              <svg>
-                <use xlinkHref="#line"></use>
-              </svg>
+              <img src={line} alt="" />
             </li>
 
             <li className="circle">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Residuary</p>
             </li>
 
             <li className="line">
-              <svg>
-                <use xlinkHref="#line"></use>
-              </svg>
+              <img src={line} alt="" />
             </li>
 
             <li className="circle">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Gifts</p>
             </li>
 
             <li className="line">
-              <svg>
-                <use xlinkHref="#line"></use>
-              </svg>
+              <img src={line} alt="" />
             </li>
 
             <li className="circle">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Funeral</p>
             </li>
 
             <li className="line">
-              <svg>
-                <use xlinkHref="#line"></use>
-              </svg>
+              <img src={line} alt="" />
             </li>
 
             <li className="circle">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Provisions</p>
             </li>
 
             <li className="line">
-              <svg>
-                <use xlinkHref="#line"></use>
-              </svg>
+              <img src={line} alt="" />
             </li>
 
             <li className="circle">
-              <svg>
-                <use xlinkHref="#circle"></use>
-              </svg>
+              <img src={circle} alt="" />
               <p>Finalize</p>
             </li>
 

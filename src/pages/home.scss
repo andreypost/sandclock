@@ -71,7 +71,7 @@
             @include grid_state;
             grid-template-columns: repeat(auto-fill, 238px);
 
-            svg {
+            img {
                 width : 106px;
                 height: 108px;
             }
@@ -141,7 +141,7 @@
                         margin-top: auto;
                     }
 
-                    svg {
+                    img {
                         min-width   : 90px;
                         max-width   : 90px;
                         min-height  : 94px;
@@ -196,7 +196,7 @@
             width : 50px;
             margin: 0 auto 36px;
 
-            svg {
+            img {
                 width : 19px;
                 height: 19px;
             }
@@ -240,7 +240,7 @@
                     margin-bottom: 32px !important;
                 }
 
-                svg {
+                img {
                     width        : 106px;
                     height       : 79.5px;
                     margin-bottom: 20px

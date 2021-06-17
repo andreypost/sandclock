@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../img/svg/logo.svg'
 
 const Nav: React.FC = () => (
   // const myRef = useRef<HTMLAnchorElement>(null);
@@ -11,9 +12,7 @@ const Nav: React.FC = () => (
   <nav>
     <div className="section">
       <Link to="/" className="logo">
-        <svg>
-          <use xlinkHref="#logo"></use>
-        </svg>
+        <img src={logo} alt="" />
       </Link>
       <ul>
         <li className="sale">

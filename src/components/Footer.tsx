@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import crypto_ether from '../img/svg/crypto_ether.svg'
+import crypto_xdai from '../img/svg/crypto_xdai.svg'
 
 const Footer: React.FC = () => (
   useEffect(() => {
@@ -9,16 +11,8 @@ const Footer: React.FC = () => (
     <div className="footer_crypto">
       <p>Powered by</p>
       <div>
-        <Link to="/" target="blanc">
-          <svg className="ether">
-            <use xlinkHref="#crypto_ether"></use>
-          </svg>
-        </Link>
-        <Link to="/" target="blanc">
-          <svg className="xdai">
-            <use xlinkHref="#crypto_xdai"></use>
-          </svg>
-        </Link>
+        <Link to="/" target="blanc"><img src={crypto_ether} alt="" className="ether" /></Link>
+        <Link to="/" target="blanc"><img src={crypto_xdai} alt="" className="xdai" /></Link>
       </div>
     </div>
     <div className="footer_terms">

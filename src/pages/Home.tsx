@@ -7,6 +7,27 @@ import Banner from '../components/Banner'
 import InfoModal from '../infoModal/InfoModal';
 import { useAppDispatch } from '../utils/hooks'
 import { errorInfoModal, succsessInfoModal, unsetInfoModal } from '../infoModal'
+import ok from '../img/svg/ok.svg'
+import git from '../img/svg/git.svg'
+import medium from '../img/svg/medium.svg'
+import twitt from '../img/svg/twitt.svg'
+import discord from '../img/svg/discord.svg'
+import telega from '../img/svg/telega.svg'
+import mail from '../img/svg/mail.svg'
+import advant_savvy from '../img/svg/advant_savvy.svg'
+import advant_zero from '../img/svg/advant_zero.svg'
+import advant_impact from '../img/svg/advant_impact.svg'
+import roll_shark from '../img/svg/roll_shark.svg'
+import roll_transfer from '../img/svg/roll_transfer.svg'
+import roll_capital from '../img/svg/roll_capital.svg'
+import arrow from '../img/svg/arrow.svg'
+import roll_allocation from '../img/svg/roll_allocation.svg'
+import roll_paper from '../img/svg/roll_paper.svg'
+import roll_print from '../img/svg/roll_print.svg'
+import roll_sign from '../img/svg/roll_sign.svg'
+import quiz_fund from '../img/svg/quiz_fund.svg'
+import quiz_donate from '../img/svg/quiz_donate.svg'
+import quiz_will from '../img/svg/quiz_will.svg'
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch(),
@@ -79,52 +100,32 @@ const Home: React.FC = () => {
             />
             <button type="submit" form="bannerForm">
               <span className="subscribe">Subscribe</span>
-              <svg className="done">
-                <use xlinkHref="#ok"></use>
-              </svg>
+              <img src={ok} alt="" className="done" />
             </button>
           </form>
           <ul className="banner_social">
             <li>
-              <Link to="/">
-                <svg>
-                  <use xlinkHref="#git"></use>
-                </svg>
+              <Link to="/"><img src={git} alt="" />
               </Link>
             </li>
             <li>
-              <Link to="/">
-                <svg>
-                  <use xlinkHref="#medium"></use>
-                </svg>
+              <Link to="/"><img src={medium} alt="" />
               </Link>
             </li>
             <li>
-              <Link to="https://twitter.com/SandclockOrg" target="blanc">
-                <svg>
-                  <use xlinkHref="#twitt"></use>
-                </svg>
+              <Link to="https://twitter.com/SandclockOrg" target="blanc"><img src={twitt} alt="" />
               </Link>
             </li>
             <li>
-              <Link to="https://discord.gg/T2tPpkZBR8" target="blanc">
-                <svg>
-                  <use xlinkHref="#discord"></use>
-                </svg>
+              <Link to="https://discord.gg/T2tPpkZBR8" target="blanc"><img src={discord} alt="" />
               </Link>
             </li>
             <li>
-              <Link to="https://t.me/sandclockorg" target="blanc">
-                <svg>
-                  <use xlinkHref="#telega"></use>
-                </svg>
+              <Link to="https://t.me/sandclockorg" target="blanc"><img src={telega} alt="" />
               </Link>
             </li>
             <li>
-              <Link to="mailto:info@sandclock.org" target="blanc">
-                <svg>
-                  <use xlinkHref="#mail"></use>
-                </svg>
+              <Link to="mailto:info@sandclock.org" target="blanc"><img src={mail} alt="" />
               </Link>
             </li>
           </ul>
@@ -135,23 +136,17 @@ const Home: React.FC = () => {
           <h2>Why Sandclock?</h2>
           <div className="advantages_descript">
             <div>
-              <svg>
-                <use xlinkHref="#advant_savvy"></use>
-              </svg>
+              <img src={advant_savvy} alt="" />
               <h5>Savvy</h5>
               <p>Whether you’re growing your capital, provisioning for your family’s future, and/or donating to charity, this is the way to go about it.</p>
             </div>
             <div>
-              <svg>
-                <use xlinkHref="#advant_zero"></use>
-              </svg>
+              <img src={advant_zero} alt="" />
               <h5>Zero-Loss</h5>
               <p>Keep your money, donate the yield; Or donate it all, to your family, or your charity of choice. Possibilities are endless—you decide the allocation.</p>
             </div>
             <div>
-              <svg>
-                <use xlinkHref="#advant_impact"></use>
-              </svg>
+              <img src={advant_impact} alt="" />
               <h5>Amplify your impact</h5>
               <p>Automatically leverage decentralized finance protocols to grow your net worth.</p>
             </div>
@@ -162,27 +157,21 @@ const Home: React.FC = () => {
           <div className="rolldown_section">
             <div className="rolldown_descript">
               <div>
-                <svg>
-                  <use xlinkHref="#roll_shark"></use>
-                </svg>
+                <img src={roll_shark} alt="" />
                 <article>
                   <h5>1. Select your risk profile</h5>
                   <p>We have multiple tranches to match your risk profile, so simply pick from the list.</p>
                 </article>
               </div>
               <div>
-                <svg>
-                  <use xlinkHref="#roll_transfer"></use>
-                </svg>
+                <img src={roll_transfer} alt="" />
                 <article>
                   <h5>2. Choose how you’re going to deposit the funds, and for how long</h5>
                   <p>We support credit/debit cards, ACH transfers, and Web3. Pick whichever!</p>
                 </article>
               </div>
               <div>
-                <svg>
-                  <use xlinkHref="#roll_capital"></use>
-                </svg>
+                <img src={roll_capital} alt="" />
                 <article>
                   <h5>3. Allocate your capital as you please</h5>
                   <p>Distribute your capital however you see fit, the world is your oyster.</p>
@@ -191,9 +180,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="rolldown_arrow" onClick={() => setRoll('')}>
-            <svg>
-              <use xlinkHref="#arrow"></use>
-            </svg>
+            <img src={arrow} alt="" />
             <p>Go back</p>
           </div>
         </div>
@@ -202,27 +189,21 @@ const Home: React.FC = () => {
           <div className="rolldown_section">
             <div className="rolldown_descript">
               <div>
-                <svg>
-                  <use xlinkHref="#roll_allocation"></use>
-                </svg>
+                <img src={roll_allocation} alt="" />
                 <article>
                   <h5>1. Select your fav organizations and allocation</h5>
                   <p>There are a myriad to pick from, but you can also add your own. Then select your allocation.</p>
                 </article>
               </div>
               <div>
-                <svg>
-                  <use xlinkHref="#roll_transfer"></use>
-                </svg>
+                <img src={roll_transfer} alt="" />
                 <article>
                   <h5>2. Choose how you’re going to deposit the funds, and for how long</h5>
                   <p>We support credit/debit cards, ACH transfers, and Web3. Pick whichever!</p>
                 </article>
               </div>
               <div>
-                <svg>
-                  <use xlinkHref="#roll_capital"></use>
-                </svg>
+                <img src={roll_capital} alt="" />
                 <article>
                   <h5>3. Allocate your capital as you please</h5>
                   <p>Distribute your capital however you see fit, the world is your oyster.</p>
@@ -231,9 +212,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="rolldown_arrow" onClick={() => setRoll('')}>
-            <svg>
-              <use xlinkHref="#arrow"></use>
-            </svg>
+            <img src={arrow} alt="" />
             <p>Go back</p>
           </div>
         </div>
@@ -242,27 +221,21 @@ const Home: React.FC = () => {
           <div className="rolldown_section">
             <div className="rolldown_descript">
               <div>
-                <svg>
-                  <use xlinkHref="#roll_paper"></use>
-                </svg>
+                <img src={roll_paper} alt="" />
                 <article>
                   <h5>1. Pick your product and fill it out online</h5>
                   <p>Will or Revocable Living Trust (soon™), up to you. Fill it out. Shouldn’t take you more than 20 minutes!</p>
                 </article>
               </div>
               <div>
-                <svg>
-                  <use xlinkHref="#roll_print"></use>
-                </svg>
+                <img src={roll_print} alt="" />
                 <article>
                   <h5>2. Print out the forms*</h5>
                   <p>A digital document is automatically generated from the information provided to you via email.</p>
                 </article>
               </div>
               <div>
-                <svg>
-                  <use xlinkHref="#roll_sign"></use>
-                </svg>
+                <img src={roll_sign} alt="" />
                 <article>
                   <h5>3. Sign & Store</h5>
                   <p>To be valid, sign it alongside your two adult witnesses. Store it in a safe place.</p>
@@ -280,9 +253,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="rolldown_arrow" onClick={() => setRoll('')}>
-            <svg>
-              <use xlinkHref="#arrow"></use>
-            </svg>
+            <img src={arrow} alt="" />
             <p>Go back</p>
           </div>
         </div>
@@ -293,23 +264,17 @@ const Home: React.FC = () => {
           <div className="quiz_action">
             <div className="">
               <h5>Set Up a Fund</h5>
-              <svg>
-                <use xlinkHref="#quiz_fund"></use>
-              </svg>
+              <img src={quiz_fund} alt="" />
               <button onClick={() => setRoll('fundset')}>Learn More</button>
             </div>
             <div>
               <h5>Make a Zero-Loss Donation</h5>
-              <svg>
-                <use xlinkHref="#quiz_donate"></use>
-              </svg>
+              <img src={quiz_donate} alt="" />
               <button onClick={() => setRoll('donateset')}>Learn More</button>
             </div>
             <div>
               <h5>Get a Free Will / RLT</h5>
-              <svg>
-                <use xlinkHref="#quiz_will"></use>
-              </svg>
+              <img src={quiz_will} alt="" />
               <button onClick={() => setRoll('willset')}>Learn More</button>
             </div>
           </div>

@@ -3,6 +3,10 @@ import './fund.scss';
 import Nav from '../components/Nav';
 import Banner from '../components/Banner';
 import Profiles from '../components/Profiles';
+import logo from '../img/svg/logo.svg'
+import link from '../img/svg/link.svg'
+import risk_yearn from '../img/svg/risk_yearn.svg'
+import risk_mph from '../img/svg/risk_mph.svg'
 
 const Fund: React.FC = () => {
   const [opacity, setPageView] = useState('')
@@ -31,14 +35,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'UST',
                     api: '85%',
-                    media: <svg>
-                      <use xlinkHref="#logo"></use>
-                    </svg>,
-                    link: <a href="">Sandclock
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={logo} alt="" />,
+                    link: <a href="">Sandclock<img src={link} alt="" /></a>,
                     actions: <button className="soon">Soon™</button>
                   }}
                 </Profiles>
@@ -46,14 +44,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'USDP',
                     api: '60%',
-                    media: <svg>
-                      <use xlinkHref="#risk_yearn"></use>
-                    </svg>,
-                    link: <a href="">Yearn
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_yearn} alt="" />,
+                    link: <a href="">Yearn<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -61,14 +53,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
-                    media: <svg>
-                      <use xlinkHref="#risk_mph"></use>
-                    </svg>,
-                    link: <a href="">88MPH
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_mph} alt="" />,
+                    link: <a href="">88MPH<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -76,14 +62,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'USDP',
                     api: '60%',
-                    media: <svg>
-                      <use xlinkHref="#risk_yearn"></use>
-                    </svg>,
-                    link: <a href="">Yearn
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_yearn} alt="" />,
+                    link: <a href="">Yearn<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -91,14 +71,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
-                    media: <svg>
-                      <use xlinkHref="#risk_mph"></use>
-                    </svg>,
-                    link: <a href="">88MPH
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_mph} alt="" />,
+                    link: <a href="">88MPH<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -106,14 +80,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'USDP',
                     api: '60%',
-                    media: <svg>
-                      <use xlinkHref="#risk_yearn"></use>
-                    </svg>,
-                    link: <a href="">Yearn
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_yearn} alt="" />,
+                    link: <a href="">Yearn<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -121,14 +89,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
-                    media: <svg>
-                      <use xlinkHref="#risk_mph"></use>
-                    </svg>,
-                    link: <a href="">88MPH
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_mph} alt="" />,
+                    link: <a href="">88MPH<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -139,14 +101,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'UST',
                     api: '85%',
-                    media: <svg>
-                      <use xlinkHref="#logo"></use>
-                    </svg>,
-                    link: <a href="">Sandclock
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={logo} alt="" />,
+                    link: <a href="">Sandclock<img src={link} alt="" /></a>,
                     actions: <button className="soon">Soon™</button>
                   }}
                 </Profiles>
@@ -154,14 +110,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'USDP',
                     api: '60%',
-                    media: <svg>
-                      <use xlinkHref="#risk_yearn"></use>
-                    </svg>,
-                    link: <a href="">Yearn
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_yearn} alt="" />,
+                    link: <a href="">Yearn<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -169,14 +119,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
-                    media: <svg>
-                      <use xlinkHref="#risk_mph"></use>
-                    </svg>,
-                    link: <a href="">88MPH
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_mph} alt="" />,
+                    link: <a href="">88MPH<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
@@ -184,14 +128,8 @@ const Fund: React.FC = () => {
                   {{
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
-                    media: <svg>
-                      <use xlinkHref="#risk_mph"></use>
-                    </svg>,
-                    link: <a href="">88MPH
-                    <svg>
-                        <use xlinkHref="#link"></use>
-                      </svg>
-                    </a>,
+                    media: <img src={risk_mph} alt="" />,
+                    link: <a href="">88MPH<img src={link} alt="" /></a>,
                     actions: <button>Deposit</button>
                   }}
                 </Profiles>
