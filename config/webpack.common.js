@@ -16,27 +16,27 @@ module.exports = {
         use: [{ loader: 'babel-loader' }],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(?:svg|ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf)$/,
         type: 'asset/inline',
       },
-      {
-        test: /\.svg$/,
-        include: [path.resolve(__dirname, '../src/img/inlineSvg')],
-        type: 'asset/inline',
-      },
-      {
-        test: /\.svg$/,
-        include: [path.resolve(__dirname, '../src/img/spriteSvg')],
-        loader: 'svg-sprite-loader',
-        // options: {
-        //   extract: true,
-        //   publicPath: "/",
-        // },
-      },
+      // { // this is for svg to load as inline, and as sprites in index.html and use them in components -> <svg><use xlinkHref={arrow}></use></svg>
+      //   test: /\.svg$/,
+      //   include: [path.resolve(__dirname, '../src/img/inlineSvg')],
+      //   type: 'asset/inline',
+      // },
+      // {
+      //   test: /\.svg$/,
+      //   include: [path.resolve(__dirname, '../src/img/spriteSvg')],
+      //   loader: 'svg-sprite-loader',
+      // options: {
+      //   extract: true,
+      //   publicPath: "/",
+      // },
+      // },
     ],
   },
   plugins: [

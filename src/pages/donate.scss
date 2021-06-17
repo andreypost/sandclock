@@ -116,20 +116,20 @@
 
                         .individual {
                             border          : 12px solid transparent;
-                            border-image    : url(../img/inlineSvg/rectangle_dashed_blur.svg) 12 round round;
+                            border-image    : url(../img/svg/rectangle_dashed_blur.svg) 12 round round;
                             background-color: $light_peach_color;
 
                             // @media (max-width: 991px) {
                             //     &:active {
                             //         transform   : scale(1.06);
-                            //         border-image: url(../img/inlineSvg/rectangle_solid_dashed.svg) 10 round round;
+                            //         border-image: url(../img/svg/rectangle_solid_dashed.svg) 10 round round;
                             //     }
                             // }
 
                             // @media (min-width: 992px) {
                             &:hover {
                                 transform       : scale(1.02);
-                                border-image    : url(../img/inlineSvg/rectangle_solid_dashed.svg) 12 round round;
+                                border-image    : url(../img/svg/rectangle_solid_dashed.svg) 12 round round;
                                 background-color: #FFFFFF;
                             }
 
