@@ -3,6 +3,9 @@ import './donate.scss';
 import axios from 'axios'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'
+import InfoModal from '../infoModal/InfoModal';
+import { useAppDispatch } from '../utils/hooks';
+import { unsetInfoModal, retrieveInfoModal, typeInfoModal, fieldInfoModal, succsessInfoModal, errorInfoModal, exceedInfoModal, sentInfoModal } from '../infoModal';
 
 // fetch from server
 const dbSuggestions = JSON.parse(JSON.stringify([
@@ -172,9 +175,10 @@ interface Options {
 }
 
 const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
-  const [opacity, setPageView] = useState(''),
+  const dispatch = useAppDispatch(),
+    [opacity, setPageView] = useState(''),
     [ownForm, setOwnForm] = useState({ form_1: '', form_2: '' }),
-    [infoMessage, setInfoMessage] = useState({ value: '', class: '' }),
+    // [infoMessage, setInfoMessage] = useState({ value: '', class: '' }),
     [orgInfoOverlay, setOrgInfoOverlay] = useState({ value: { title: title, type: type, mission: mission }, class: '' }),
     [nameOwnForm, setNameOwnForm] = useState(''),
     [typeOwnForm, setTypeOwnForm] = useState({ value: '', org: '', individual: '' }),
@@ -212,12 +216,12 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
     setSuggestions(dbSuggestions) // remove on production
     // axios.get('https://www.sandclock.org/api')
     //   .then(results => setSuggestions(results))
-    //   .catch(() => setInfoMessage({ value: 'Sorry, but it is not possible to retrieve data at this time. Try later!', class: 'active' }))
+    //   .catch(() => dispatch(retrieveInfoModal()))
   }
   const handleOwnTypeForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     if (!typeOwnForm.value) {
-      setInfoMessage({ value: 'Please choose the type before proceeding.', class: 'active' })
+      dispatch(typeInfoModal())
       return
     }
     setOwnForm({ form_1: '', form_2: 'active' })
@@ -227,7 +231,7 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
     console.log(user)
     const field = emailOwnForm || einOwnForm
     if (!field) {
-      setInfoMessage({ value: 'We need you to fill in an additional field of your choice to ensure your donation will go to the right place.', class: 'active' })
+      dispatch(fieldInfoModal())
       return
     }
     axios.post(`https://www.sandclock.org/api/subscribe`, {
@@ -235,7 +239,7 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
       headers: { 'Content-Type:': 'application/json' }
     })
       .then(() => {
-        setInfoMessage({ value: 'You have successfully subscribed!', class: 'active' })
+        dispatch(succsessInfoModal())
         setOwnForm({ form_1: '', form_2: '' })
         setNameOwnForm('')
         setTypeOwnForm({ value: '', org: '', individual: '' })
@@ -247,8 +251,8 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
         setEinOwnForm('')
         setMessageOwnForm('')
       })
-      .catch(() => setInfoMessage({ value: 'Sorry, but it is not possible to subscribe right now. Try later!', class: 'active' }))
-    // .finally(() => setInfoMessage({ value: '', class: '' }))
+      .catch(() => dispatch(errorInfoModal()))
+    // .finally(() => dispatch(unsetInfoModal())
   }
   const handlePercentLevelDonate = (e: { target: any }) => {
     let percent = 0
@@ -259,9 +263,6 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
     if (e.target.classList.contains('info')) return
     const target = e.target.closest('.episode'),
       episodeInput = target.closest('main').querySelector(`.donate_item[data-index='${target.dataset.index}']`)
-    // const array = [] as any
-    // const targetObj = {} as Options
-    // const targetObj: { episodeName: string, episodeValue: string } = { episodeName: target.dataset.title, episodeValue: '' }
     if (!target.classList.contains('active')) {
       target.classList.add('active')
       episodeInput.classList.add('active')
@@ -282,7 +283,7 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
   const handleSubmitAllocationForm = (e: { target: any, preventDefault: () => void }) => {
     e.preventDefault()
     if (levelDonate.value > 100) {
-      setInfoMessage({ value: 'Your total allocation cannot exceed 100%. Please review your allocation(s)', class: 'active' })
+      dispatch(exceedInfoModal())
       return
     }
     const data = new FormData(), inputs = e.target.elements
@@ -294,27 +295,27 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
       headers: { 'Content-Type:': 'application/json' }
     })
       .then(() => {
-        setInfoMessage({ value: 'Your allocation(s) data has been sent!', class: 'active' })
+        dispatch(sentInfoModal())
         setLevelDonate({ value: 0, submit: '', class: '' })
         document.querySelectorAll('.episode').forEach(item => item.classList.remove('active'))
         document.querySelectorAll('.donate_item').forEach(item => item.classList.remove('active'))
       })
-      .catch(() => setInfoMessage({ value: 'Sorry, but it is not possible to subscribe right now. Try later!', class: 'active' }))
+      .catch(() => dispatch(errorInfoModal()))
     // .finally(() => )
   }
   useEffect(() => {
     setTimeout(() => setPageView('active'))
     if (suggestions && suggestions.length === 0) getAllSuggestions()  // fetch results
     // if (Object.entries(suggestions).length === 0) getAllSuggestions()
-    const removeState = (e: { key: string }) => {
+    const unsetState = (e: { key: string }) => {
       if (e.key === 'Escape') {
-        setInfoMessage({ value: '', class: '' })
+        dispatch(unsetInfoModal())
         setOwnForm({ form_1: '', form_2: '' })
         setOrgInfoOverlay({ value: { title: '', type: '', mission: '' }, class: '' })
       }
     }
-    document.addEventListener('keydown', e => removeState(e))
-    return document.removeEventListener('keydown', removeState)
+    document.addEventListener('keydown', e => unsetState(e))
+    return document.removeEventListener('keydown', unsetState)
   }, [])
   return (
     <div className={'fallback donatepage ' + opacity}>
@@ -389,12 +390,13 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
           </form>
         </div>
       </main>
-      <div className={'modal info ' + infoMessage.class} onClick={e => { if (e.target === e.currentTarget) setInfoMessage({ value: '', class: '' }) }}>
+      {/* <div className={'modal info ' + infoMessage.class} onClick={e => { if (e.target === e.currentTarget) setInfoMessage({ value: '', class: '' }) }}>
         <article>
           <h6>{infoMessage.value}</h6>
           <p className="goBack" onClick={() => setInfoMessage({ value: '', class: '' })}>← Go back</p>
         </article>
-      </div>
+      </div> */}
+      <InfoModal />
       <div className={'modal ' + ownForm.form_1} onClick={e => { if (e.target === e.currentTarget) setOwnForm({ form_1: '', form_2: '' }) }}>
         <form action="" id="individualStartForm" onSubmit={handleOwnTypeForm}>
           <label htmlFor="name">Recipient’s name</label>

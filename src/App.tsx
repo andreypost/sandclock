@@ -8,9 +8,9 @@ import {
 } from 'react-router-dom'
 import Loader from './components/Loader'
 // import { ConnectedRouter } from 'connected-react-router';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
+import { store } from './store';
 // import { PersistGate } from 'redux-persist/integration/react';
-// import { store, persistor, history } from 'app/store';
 
 const Sale = lazy(() => import('./pages/Sale'))
 const Home = lazy(() => import('./pages/Home'))
@@ -25,29 +25,27 @@ const Footer = lazy(() => import('./components/Footer'))
 const App = (): any => {
     const [suggestions, setSuggestions] = useState([])
     return (
-        // <Provider store={store}>
-        // <PersistGate persistor={persistor} loading={<Loading />}>
-        // <Router basename="/">
-        <HashRouter basename="/">
-            <Suspense fallback={<Loader />}>
-                {/* <ConnectedRouter history={history}> */}
-                <Switch>
-                    <Route path="/sale" component={Sale} />
-                    <Route exact path="/" component={Home} />
-                    <Route path="/fund" component={Fund} />
-                    <Route path="/about" component={About} />
-                    <Route path="/donate" render={() => (<Donate suggestions={suggestions} setSuggestions={setSuggestions} />)} />
-                    <Route path="/will" component={Will} />
-                    <Route path="/faq" component={Faq} />
-                    <Route path="/friends" component={Friends} />
-                </Switch>
-                <Footer />
-                {/* </ConnectedRouter> */}
-            </Suspense>
-        </HashRouter>
-        // </Router>
-        // </PersistGate>
-        // </Provider>
+        <Provider store={store}>
+            {/* <PersistGate persistor={persistor} loading={<Loading />}> */}
+            <HashRouter basename="/">
+                <Suspense fallback={<Loader />}>
+                    {/* <ConnectedRouter history={history}> */}
+                    <Switch>
+                        <Route path="/sale" component={Sale} />
+                        <Route exact path="/" component={Home} />
+                        <Route path="/fund" component={Fund} />
+                        <Route path="/about" component={About} />
+                        <Route path="/donate" render={() => (<Donate suggestions={suggestions} setSuggestions={setSuggestions} />)} />
+                        <Route path="/will" component={Will} />
+                        <Route path="/faq" component={Faq} />
+                        <Route path="/friends" component={Friends} />
+                    </Switch>
+                    <Footer />
+                    {/* </ConnectedRouter> */}
+                </Suspense>
+            </HashRouter>
+            {/* </PersistGate> */}
+        </Provider>
     )
 }
 export default App

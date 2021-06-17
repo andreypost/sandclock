@@ -4,9 +4,13 @@ import './home.scss'
 import axios from 'axios'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'
+import InfoModal from '../infoModal/InfoModal';
+import { useAppDispatch } from '../utils/hooks'
+import { errorInfoModal, succsessInfoModal, unsetInfoModal } from '../infoModal'
 
 const Home: React.FC = () => {
-  const [opacity, setPageView] = useState(''),
+  const dispatch = useAppDispatch(),
+    [opacity, setPageView] = useState(''),
     [email, setEmail] = useState(''),
     [roll, setRoll] = useState('')
   const handleEmailFormImage = (message: boolean) => {
@@ -31,14 +35,27 @@ const Home: React.FC = () => {
       body: user,
       headers: { 'Content-Type:': 'application/json' }
     })
-      .then(() => handleEmailFormImage(true))
-      .catch(() => handleEmailFormImage(false))
+      .then(() => {
+        dispatch(succsessInfoModal())
+        handleEmailFormImage(true)
+      })
+      .catch(() => {
+        dispatch(errorInfoModal())
+        handleEmailFormImage(false)
+      })
       .finally(() => {
         setEmail('')
       })
   }
   useEffect(() => {
     setTimeout(() => setPageView('active'))
+    const unsetState = (e: { key: string }) => {
+      if (e.key === 'Escape') {
+        dispatch(unsetInfoModal())
+      }
+    }
+    document.addEventListener('keydown', e => unsetState(e))
+    return document.removeEventListener('keydown', unsetState)
   }, [])
   return (
     <div className={'fallback homepage ' + opacity}>
@@ -298,6 +315,7 @@ const Home: React.FC = () => {
           </div>
         </article>
       </main>
+      <InfoModal />
     </div>
   )
 }

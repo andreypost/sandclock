@@ -11,7 +11,7 @@ const importAllSvg = (webpackContext: __WebpackModuleApi.RequireContext) => {
 importAllSvg(require.context('./img/spriteSvg', false, /\.(svg)$/))
 
 if (process.env.NODE_ENV !== 'production') {
-  console.log(process.env.NODE_ENV, 'development ')
+  // console.log(process.env.NODE_ENV, 'development ')
 }
 
 ReactDom.render(<App />, document.getElementById('root'))
