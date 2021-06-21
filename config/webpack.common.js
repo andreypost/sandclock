@@ -19,10 +19,10 @@ module.exports = {
         test: /\.(?:svg|ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
-      {
-        test: /\.(woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/inline',
-      },
+      // { // @font-face type of connetion fonts is much more slower.
+      //   test: /\.(woff(2)?|eot|ttf|otf)$/,
+      //   type: 'asset/inline',
+      // },
       // { // this is for svg to load as inline, and as sprites in index.html and use them in components -> <svg><use xlinkHref={arrow}></use></svg>
       //   test: /\.svg$/,
       //   include: [path.resolve(__dirname, '../src/img/inlineSvg')],

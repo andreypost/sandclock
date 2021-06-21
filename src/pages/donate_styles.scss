@@ -108,10 +108,9 @@
                             }
 
                             h4 {
-                                font-family   : 'Merriweather';
-                                // font-family: $merriweather-font-family;
-                                font-size     : 22px;
-                                font-weight   : 400;
+                                font-family: $merriweather-font-family;
+                                font-size  : 22px;
+                                font-weight: 400;
                             }
                         }
 
@@ -282,20 +281,20 @@
                     gap                  : 24px;
 
                     .donate_item {
-                        display            : none;
-                        align-items        : center;
-                        justify-content    : space-between;
-                        box-sizing         : border-box;
+                        display         : none;
+                        align-items     : center;
+                        justify-content : space-between;
+                        box-sizing      : border-box;
                         // max-width    : 296px;
                         // min-width    : 296px;
-                        width              : 296px;
-                        height             : 53px;
-                        border-radius      : 30px;
-                        // font-weight     : 400;
-                        padding-left       : 50px;
-                        padding-right      : 17px;
-                        box-shadow         : 0px 4px 8px rgba(0, 0, 0, 0.25);
-                        background         : #FFFFFF;
+                        width           : 296px;
+                        height          : 53px;
+                        border-radius   : 30px;
+                        font-weight     : 400;
+                        padding-left    : 50px;
+                        padding-right   : 17px;
+                        box-shadow      : 0px 4px 8px rgba(0, 0, 0, 0.25);
+                        background      : #FFFFFF;
 
                         &.active {
                             display: flex;
@@ -322,18 +321,18 @@
                             }
 
                             input {
-                                box-sizing                : border-box;
-                                border                    : none;
-                                width                     : 38px;
-                                font-size                 : 18px;
-                                // font-weight            : 400;
-                                text-align                : center;
-                                background                : linear-gradient(90deg, #FF5C00 32.05%, #33FF00 68.38%);
-                                -webkit-background-clip   : text;
-                                -webkit-text-fill-color   : $red_color;
-                                background-clip           : text;
-                                color                     : $red_color;
-                                caret-color               : $red_color;
+                                box-sizing             : border-box;
+                                border                 : none;
+                                width                  : 38px;
+                                font-size              : 18px;
+                                font-weight            : 400;
+                                text-align             : center;
+                                background             : linear-gradient(90deg, #FF5C00 32.05%, #33FF00 68.38%);
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: $red_color;
+                                background-clip        : text;
+                                color                  : $red_color;
+                                caret-color            : $red_color;
                             }
                         }
                     }
@@ -465,9 +464,8 @@
             }
 
             h3 {
-                font-family   : 'Merriweather';
-                // font-family: $merriweather-font-family;
-                font-size     : 32px;
+                font-family: $merriweather-font-family;
+                font-size  : 32px;
             }
 
         }
