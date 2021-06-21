@@ -1,7 +1,8 @@
 @import 'variables-mixins';
 
 body {
-    font-family: $inter-font-family;
+    // font-family: $inter-font-family;
+    font-family: 'Inter';
     user-select: none;
     color      : #000000;
 }
@@ -228,10 +229,11 @@ header {
             padding-top: 37px;
 
             h1 {
-                font-size    : 28px;
-                line-height  : 28px;
-                font-family  : $dm-font-family;
-                margin-bottom: 16px;
+                font-size       : 28px;
+                line-height     : 28px;
+                // font-family  : $dm-font-family;
+                font-family     : 'DM';
+                margin-bottom   : 16px;
             }
 
             h5 {
@@ -383,7 +385,7 @@ header {
 
     label {
         display      : inline-block;
-        font-weight  : bold;
+        font-weight  : 700;
         font-size    : 18px;
         margin-bottom: 24px
     }

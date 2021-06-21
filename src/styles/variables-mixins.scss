@@ -1,9 +1,26 @@
-$inter-font-family: 'Inter',
-sans-serif;
-$dm-font-family: 'DM Serif Display',
-serif;
-$merriweather-font-family: 'Merriweather',
-serif;
+// $inter-font-family: 'Inter',
+// sans-serif;
+// $dm-font-family: 'DM Serif Display',
+// serif;
+// $merriweather-font-family: 'Merriweather',
+// serif;
+
+@font-face {
+    font-family: 'Inter';
+    src        : url(../fonts/Inter-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'DM';
+    src        : url(../fonts/DMSerifDisplay-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src        : url(../fonts/Merriweather-Regular.ttf);
+}
+
+
 $red_color        : #E9758A;
 $peach_color      : #FFF5EE;
 $light_peach_color: #FEFAFF;
@@ -109,7 +126,8 @@ $pink_color       : #FF00C7;
 }
 
 @mixin h2_styles {
-    font-family: $dm-font-family;
+    // font-family: $dm-font-family;
+    font-family: 'DM';
 
     @media (max-width: 991px) {
         font-size    : 28px;
