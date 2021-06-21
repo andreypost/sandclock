@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './friends.scss'
+import './friends_styles.scss'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'
 import part_aragon from '../img/svg/part_aragon.svg'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './fund.scss';
+import './fund_styles.scss';
 import Nav from '../components/Nav';
 import Banner from '../components/Banner';
 import Profiles from '../components/Profiles';

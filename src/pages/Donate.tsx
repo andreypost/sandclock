@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './donate.scss';
+import './donate_styles.scss';
 import axios from 'axios'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'

@@ -1,4 +1,5 @@
 import React from 'react'
+import './info_styles.scss'
 import { useAppDispatch, useAppSelector } from '../utils/hooks'
 import { unsetInfoModal } from './index'
 

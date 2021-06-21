@@ -1,7 +1,6 @@
 import React from 'react'
 // import React, { ReactNode } from 'react
 
-// type Props = {
 interface Props {
   children: {
     aum: string

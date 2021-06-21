@@ -1,0 +1,16 @@
+@import '../styles/variables-mixins.scss';
+
+.info>article {
+    @include flex_center_bet_col;
+    min-height: 105px;
+    margin-top: 30vh;
+    padding   : 20px 20px 10px;
+    background: #FEDEFF;
+    text-align: center;
+
+    h6 {
+        font-size    : 18px;
+        line-height  : 21px;
+        margin-bottom: 10px;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import './home.scss'
+import './home_styles.scss'
 import axios from 'axios'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'

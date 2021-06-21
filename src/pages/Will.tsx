@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './will.scss'
+import './will_styles.scss'
 import Nav from '../components/Nav'
 import circle from '../img/svg/circle.svg'
 import line from '../img/svg/line.svg'

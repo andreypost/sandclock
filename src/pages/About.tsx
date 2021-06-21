@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './about.scss'
+import './about_styles.scss'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'
 import arrow from '../img/svg/arrow.svg'
