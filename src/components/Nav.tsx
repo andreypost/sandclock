@@ -1,14 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../img/svg/logo.svg'
+import logo from 'svg/logo.svg'
 
 const Nav: React.FC = () => (
-  // const myRef = useRef<HTMLAnchorElement>(null);
-  // const tooltip = useRef<HTMLParagraphElement>(null);
-  // if (myRef && myRef.current && tooltip && tooltip.current) {
-  //   tooltip.current.style.left = `${(tooltip.current.offsetWidth - myRef.current.offsetWidth) / 2}px`
-  //   console.log((tooltip.current.offsetWidth - myRef.current.offsetWidth) / 2);
-  // }
   <nav>
     <div className="section">
       <Link to="/" className="logo">

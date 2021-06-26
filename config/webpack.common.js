@@ -7,6 +7,17 @@ module.exports = {
   entry: path.resolve(__dirname, '../src/index.tsx'),
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      components: path.resolve(__dirname, '../src/components'),
+      Spiner$: path.resolve(__dirname, '../src/components/Spiner.tsx'),
+      img: path.resolve(__dirname, '../src/img'),
+      svg: path.resolve(__dirname, '../src/img/svg'),
+      mixins$: path.resolve(__dirname, '../src/styles/variables-mixins.scss'),
+      utils: path.resolve(__dirname, '../src/utils'),
+      views: path.resolve(__dirname, '../src/views'),
+      store$: path.resolve(__dirname, '../src/store.ts'),
+      // '@': path.resolve(__dirname, 'src'),
+    },
   },
   module: {
     rules: [
@@ -23,7 +34,7 @@ module.exports = {
       //   test: /\.(woff(2)?|eot|ttf|otf)$/,
       //   type: 'asset/inline',
       // },
-      // { // this is for svg to load as inline, and as sprites in index.html and use them in components -> <svg><use xlinkHref={arrow}></use></svg>
+      // { // rules for svg to load as inline, and as sprites in index.html and use them in components -> <svg><use xlinkHref={arrow}></use></svg>
       //   test: /\.svg$/,
       //   include: [path.resolve(__dirname, '../src/img/inlineSvg')],
       //   type: 'asset/inline',
@@ -32,10 +43,6 @@ module.exports = {
       //   test: /\.svg$/,
       //   include: [path.resolve(__dirname, '../src/img/spriteSvg')],
       //   loader: 'svg-sprite-loader',
-      // options: {
-      //   extract: true,
-      //   publicPath: "/",
-      // },
       // },
     ],
   },

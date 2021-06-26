@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import crypto_ether from '../img/svg/crypto_ether.svg'
-import crypto_xdai from '../img/svg/crypto_xdai.svg'
+import crypto_ether from 'svg/crypto_ether.svg'
+import crypto_xdai from 'svg/crypto_xdai.svg'
 
 const Footer: React.FC = () => (
   useEffect(() => {

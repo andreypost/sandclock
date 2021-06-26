@@ -1,0 +1,261 @@
+@import 'mixins';
+
+.homepage {
+
+    header form {
+        @include flex_center;
+
+        input {
+            @include input_inset;
+            text-align: center;
+        }
+
+        button[type=submit] {
+            @include yellow_button;
+            min-width  : 137px;
+            max-width  : 137px;
+            margin-left: -20px;
+            position   : relative;
+            @include hover_active;
+
+            .subscribe,
+            .done {
+                position  : absolute;
+                left      : 0;
+                right     : 0;
+                top       : 0;
+                bottom    : 0;
+                margin    : auto;
+                transition: all .4s;
+            }
+
+            .subscribe {
+                width : 100%;
+                height: 20px;
+
+                &.inactive {
+                    opacity: 0;
+                }
+            }
+
+            .done {
+                width  : 32px;
+                height : 32px;
+                opacity: 0;
+
+                &.active {
+                    opacity: 1;
+                }
+
+                &.faulty {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    .advantages {
+        @include border_radius;
+        padding   : 36px 50px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        position  : relative;
+        z-index   : 99;
+        background: $peach_color;
+
+        h2 {
+            @include h2_styles;
+        }
+
+        &_descript {
+            @include grid_state;
+            grid-template-columns: repeat(auto-fill, 238px);
+
+            img {
+                width : 106px;
+                height: 108px;
+            }
+
+            h5 {
+                @include h5_styles;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+    }
+
+    .rolldown {
+        @include flex_start_end_col;
+        @include border_radius;
+        position     : absolute;
+        left         : 0;
+        right        : 0;
+        top          : 37%;
+        height       : 510px;
+        max-height   : 0;
+        margin       : 0 20px;
+        padding-right: 55px;
+        padding-left : 60px;
+        border       : 0.25px solid rgba(0, 0, 0, 0.25);
+        text-align   : center;
+        box-shadow   : 4px 4px 4px rgba(0, 0, 0, 0.25);
+        background   : #FFF7CC;
+        opacity      : 0;
+        z-index      : 9;
+        overflow     : hidden;
+        transition   : max-height .8s, opacity .1s .8s;
+
+        @media (min-width: 1080px) {
+            margin: 0 70px;
+        }
+
+        &.uno.fundset,
+        &.dous.donateset,
+        &.tres.willset {
+            max-height: 510px;
+            opacity   : 1;
+            transition: opacity .1s, max-height .8s .1s;
+        }
+
+        h2 {
+            @include h2_styles;
+            align-self: center;
+        }
+
+        &_section {
+            @include flex_center;
+            text-align: left;
+
+            .rolldown_descript {
+                @include flex_center_bet_col;
+                height: 300px;
+
+                >div {
+                    display      : flex;
+                    margin-bottom: auto;
+
+                    &.center {
+                        margin-top: auto;
+                    }
+
+                    img {
+                        min-width   : 90px;
+                        max-width   : 90px;
+                        min-height  : 94px;
+                        max-height  : 94px;
+                        margin-right: 36px;
+                    }
+
+                    article {
+
+                        h5,
+                        p {
+                            @include h5_styles;
+                        }
+
+                        p {
+                            margin-bottom: unset;
+                        }
+                    }
+                }
+            }
+
+            .rolldown_descript:nth-of-type(1) {
+                min-width: 467px;
+                max-width: 467px;
+            }
+
+            .rolldown_line {
+                height      : 300px;
+                border-right: 1px solid #000000;
+                margin      : 0 38px 0 34px;
+            }
+
+            // ul:nth-of-type(1) {
+            //     border-right: 1px solid #000000;
+            //     font-size   : 18px;
+            // li:nth-of-type(odd) {
+            //     font-weight        : 700;
+            //     list-style         : decimal;
+            //     list-style-position: inside;
+            //     margin-bottom      : 15px;
+            // &::before {
+            //     content: url(../img/roll_fund_01.svg);
+            // }
+            // }
+            // li:nth-of-type(even) {
+            //     display: block;
+            // }
+            // }
+        }
+
+        &_arrow {
+            width : 50px;
+            margin: 0 auto 36px;
+
+            img {
+                width : 19px;
+                height: 19px;
+            }
+
+            p {
+                font-size  : 12px;
+                font-weight: 400;
+            }
+
+            @media (min-width: 992px) {
+                &:hover {
+                    color : $red_color;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+
+    .quiz {
+        padding   : 36px 0 158px;
+        text-align: center;
+
+        h2 {
+            @include h2_styles;
+        }
+
+        &_action {
+            @include grid_state;
+            grid-template-columns: repeat(auto-fill, 278px);
+
+            >div {
+                @include flex_center_bet_col;
+                padding      : 30px 5px 17px;
+                border-radius: 15px;
+                border       : 0.5px solid rgba(0, 0, 0, 0.15);
+                box-shadow   : 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+                h5 {
+                    @include h5_styles;
+                    margin-bottom: 32px !important;
+                }
+
+                img {
+                    width        : 106px;
+                    height       : 79.5px;
+                    margin-bottom: 20px
+                }
+
+                button {
+                    @include yellow_button;
+                    font-size    : 16px;
+                    height       : 40px;
+                    width        : 96px;
+                    padding      : 0;
+                    border-radius: 10px;
+                    @include hover_active
+                }
+            }
+        }
+    }
+}

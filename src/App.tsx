@@ -6,21 +6,21 @@ import {
     // BrowserRouter as Router,
     Switch,
 } from 'react-router-dom'
-import Loader from './components/Loader'
-// import { ConnectedRouter } from 'connected-react-router';
-import { Provider } from 'react-redux';
-import { store } from './store';
-// import { PersistGate } from 'redux-persist/integration/react';
+import Spiner from 'Spiner'
+// import { ConnectedRouter } from 'connected-react-router'
+import { Provider } from 'react-redux'
+import { store } from './store'
+// import { PersistGate } from 'redux-persist/integration/react'
 
-const Sale = lazy(() => import('./pages/Sale'))
-const Home = lazy(() => import('./pages/Home'))
-const Fund = lazy(() => import('./pages/Fund'))
-const Donate = lazy(() => import('./pages/Donate'))
-const Will = lazy(() => import('./pages/Will'))
-const About = lazy(() => import('./pages/About'))
-const Faq = lazy(() => import('./pages/Faq'))
-const Friends = lazy(() => import('./pages/Friends'))
-const Footer = lazy(() => import('./components/Footer'))
+const Sale = lazy(() => import('views/Sale'))
+const Home = lazy(() => import('views/Home'))
+const Fund = lazy(() => import('views/Fund'))
+const Donate = lazy(() => import('views/Donate'))
+const Will = lazy(() => import('views/Will'))
+const About = lazy(() => import('views/About'))
+const Faq = lazy(() => import('views/Faq'))
+const Friends = lazy(() => import('views/Friends'))
+const Footer = lazy(() => import('components/Footer'))
 
 const App = (): any => {
     const [suggestions, setSuggestions] = useState([])
@@ -28,7 +28,7 @@ const App = (): any => {
         <Provider store={store}>
             {/* <PersistGate persistor={persistor} loading={<Loading />}> */}
             <HashRouter basename="/">
-                <Suspense fallback={<Loader />}>
+                <Suspense fallback={<Spiner />}>
                     {/* <ConnectedRouter history={history}> */}
                     <Switch>
                         <Route path="/sale" component={Sale} />
