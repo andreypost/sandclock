@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './Donate.styles.scss';
 import axios from 'axios'
 import Nav from 'components/Nav'
@@ -8,7 +8,7 @@ import { unsetInfoModal, retrieveInfoModal, typeInfoModal, fieldInfoModal, succs
 import { useAppDispatch } from 'utils/hooks';
 import info_circle from 'svg/info_circle.svg'
 import ogr_info_dog from 'svg/ogr_info_dog.svg'
-
+import { SuggestionsContext } from '../App';
 
 // mock fetch server
 const dbSuggestions = JSON.parse(JSON.stringify([
@@ -159,10 +159,15 @@ const dbSuggestions = JSON.parse(JSON.stringify([
   },
 ]))
 
-interface Props {
-  suggestions: Array<{ header: string, orgs: [{ title: string, type: string, mission: string }] }>
-  setSuggestions: (arg0: any) => void
-}
+// interface Props {
+//   suggestions: Array<{ header: string, orgs: [{ title: string, type: string, mission: string }] }>
+//   setSuggestions: (arg0: any) => void
+// }
+
+// interface Props {
+//   header: string;
+//   orgs: [{ title: string, type: string, mission: string }];
+// }
 
 interface Options {
   boxIndex: number
@@ -173,9 +178,11 @@ interface Options {
   new(name: string): { string: any }[]
 }
 
-const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
+// const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
+const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
   const dispatch = useAppDispatch(),
     [opacity, setPageView] = useState(''),
+    { suggestions, setSuggestions } = useContext(SuggestionsContext),
     [ownForm, setOwnForm] = useState({ form_1: '', form_2: '' }),
     // [infoMessage, setInfoMessage] = useState({ value: '', class: '' }),
     [orgInfoOverlay, setOrgInfoOverlay] = useState({ value: { title: title, type: type, mission: mission }, class: '' }),
@@ -304,7 +311,10 @@ const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIn
   }
   useEffect(() => {
     setTimeout(() => setPageView('active'))
-    if (suggestions && suggestions.length === 0) getAllSuggestions()  // fetch results
+    if (suggestions && suggestions.length === 0) {
+      getAllSuggestions()  // fetch results
+      console.log(suggestions)
+    }
     // if (Object.entries(suggestions).length === 0) getAllSuggestions()
     const unsetState = (e: { key: string }) => {
       if (e.key === 'Escape') {

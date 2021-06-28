@@ -9,7 +9,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       components: path.resolve(__dirname, '../src/components'),
-      Spiner$: path.resolve(__dirname, '../src/components/Spiner.tsx'),
+      Spiner$: path.resolve(__dirname, '../src/components/Spiner.tsx'), // $ - added to signify an exact match
       img: path.resolve(__dirname, '../src/img'),
       svg: path.resolve(__dirname, '../src/img/svg'),
       mixins$: path.resolve(__dirname, '../src/styles/variables-mixins.scss'),

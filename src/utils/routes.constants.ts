@@ -1,0 +1,8 @@
+export const HOME_ROUTE = '/home'
+export const ABOUT_ROUTE = '/about'
+export const DONATE_ROUTE = '/donate'
+export const FAQ_ROUTE = '/faq'
+export const FRIENDS_ROUTE = '/friends'
+export const FUND_ROUTE = '/fund'
+export const SALE_ROUTE = '/sale'
+export const WILL_ROUTE = '/will'
