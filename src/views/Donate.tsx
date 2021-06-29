@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react'
 import './Donate.styles.scss';
 import axios from 'axios'
-import Nav from 'components/Nav'
-import Banner from 'components/Banner'
+import Nav from 'Nav'
+import Banner from 'Banner'
+import Footer from 'Footer'
 import InfoModal from 'components/Info.modal';
 import { unsetInfoModal, retrieveInfoModal, typeInfoModal, fieldInfoModal, succsessInfoModal, errorInfoModal, exceedInfoModal, sentInfoModal } from 'components/info.modal.slice';
 import { useAppDispatch } from 'utils/hooks';
@@ -388,6 +389,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
           </form>
         </div>
       </main>
+      <Footer />
       <InfoModal />
       <div className={'modal ' + ownForm.form_1} onClick={e => { if (e.target === e.currentTarget) setOwnForm({ form_1: '', form_2: '' }) }}>
         <form action="" id="individualStartForm" onSubmit={handleOwnTypeForm}>

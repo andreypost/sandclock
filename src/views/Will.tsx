@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Will.styles.scss'
-import Nav from 'components/Nav'
+import Nav from 'Nav'
+import Footer from 'Footer'
 import circle from 'svg/circle.svg'
 import line from 'svg/line.svg'
 
@@ -212,6 +213,7 @@ const Will: React.FC = (props, { data, commit }: Options) => {
         </div> */}
 
       </main>
+      <Footer />
     </div>
   )
 }

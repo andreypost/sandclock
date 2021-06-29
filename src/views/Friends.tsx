@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './Friends.styles.scss'
-import Nav from 'components/Nav'
-import Banner from 'components/Banner'
+import Nav from 'Nav'
+import Banner from 'Banner'
+import Footer from 'Footer'
 import part_aragon from 'svg/part_aragon.svg'
 import part_babylon from 'svg/part_babylon.svg'
 import part_connext from 'svg/part_connext.svg'
@@ -49,6 +50,7 @@ const Friends: React.FC = () => {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   )
 }

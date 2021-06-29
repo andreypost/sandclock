@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.styles.scss'
 import axios from 'axios'
-import Nav from 'components/Nav'
-import Banner from 'components/Banner'
-import InfoModal from 'components/Info.modal';
+import Nav from 'Nav'
+import Banner from 'Banner'
+import Footer from 'Footer'
+import InfoModal from 'components/Info.modal'
 import { errorInfoModal, succsessInfoModal, unsetInfoModal } from 'components/info.modal.slice'
 import { useAppDispatch } from 'utils/hooks'
 import ok from 'svg/ok.svg'
@@ -280,6 +281,7 @@ const Home: React.FC = () => {
           </div>
         </article>
       </main>
+      <Footer />
       <InfoModal />
     </div>
   )

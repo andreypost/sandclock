@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './About.styles.scss'
-import Nav from 'components/Nav'
-import Banner from 'components/Banner'
+import Nav from 'Nav'
+import Banner from 'Banner'
+import Footer from 'Footer'
 import arrow from 'svg/arrow.svg'
 
 const About: React.FC = () => {
@@ -101,6 +102,7 @@ const About: React.FC = () => {
           </article>
         </section>
       </main>
+      <Footer />
     </div>
   )
 }

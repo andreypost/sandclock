@@ -21,6 +21,9 @@
       "paths": {
         "components": ["components"],
         "Spiner": ["components/Spiner"],
+        "Banner": ["components/Banner"],
+        "Footer": ["components/Footer"],
+        "Nav": ["components/Nav"],
         "img": ["img"],
         "svg": ["svg"],
         "utils": ["utils"],

@@ -19,7 +19,6 @@ export const SuggestionsContext = createContext({} as SCProps)
 // })
 
 const AppRouter = lazy(() => import('./AppRouter'))
-const Footer = lazy(() => import('components/Footer'))
 
 const App: React.FC = () => {
     const [suggestions, setSuggestions] = useState([])
@@ -30,7 +29,6 @@ const App: React.FC = () => {
                     {/* <BrowserRouter basename="/"> */}
                     <Suspense fallback>
                         <AppRouter />
-                        <Footer />
                     </Suspense>
                     {/* </BrowserRouter> */}
                 </HashRouter>

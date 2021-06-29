@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './Faq.styles.scss'
-import Nav from 'components/Nav'
-import Banner from 'components/Banner'
+import Nav from 'Nav'
+import Banner from 'Banner'
+import Footer from 'Footer'
 
 const Faq: React.FC = () => {
   const [opacity, setPageView] = useState('')
@@ -20,6 +21,7 @@ const Faq: React.FC = () => {
 
 
       </main>
+      <Footer />
     </div>
   )
 }

@@ -10,6 +10,9 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, '../src/components'),
       Spiner$: path.resolve(__dirname, '../src/components/Spiner.tsx'), // $ - added to signify an exact match
+      Banner$: path.resolve(__dirname, '../src/components/Banner.tsx'),
+      Footer$: path.resolve(__dirname, '../src/components/Footer.tsx'),
+      Nav$: path.resolve(__dirname, '../src/components/Nav.tsx'),
       img: path.resolve(__dirname, '../src/img'),
       svg: path.resolve(__dirname, '../src/img/svg'),
       mixins$: path.resolve(__dirname, '../src/styles/variables-mixins.scss'),

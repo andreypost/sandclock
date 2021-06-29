@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Nav from 'components/Nav'
+import Nav from 'Nav'
+import Footer from 'Footer'
 
 const Sale: React.FC = () => {
   const [opacity, setPageView] = useState('')
@@ -13,6 +14,7 @@ const Sale: React.FC = () => {
       </header>
       <main className="section" style={{ marginTop: '180px' }}>
       </main>
+      <Footer />
     </div>
   )
 }

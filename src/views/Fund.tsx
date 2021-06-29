@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './Fund.styles.scss';
-import Nav from 'components/Nav';
-import Banner from 'components/Banner';
-import Profiles from 'components/Profiles';
+import React, { useState, useEffect } from 'react'
+import './Fund.styles.scss'
+import Nav from 'Nav'
+import Banner from 'Banner'
+import Footer from 'Footer'
+import Profiles from 'components/Profiles'
 import logo from 'svg/logo.svg'
 import link from 'svg/link.svg'
 import risk_yearn from 'svg/risk_yearn.svg'
@@ -138,6 +139,7 @@ const Fund: React.FC = () => {
           </section>
         </div>
       </main>
+      <Footer />
     </div>
   )
 }
