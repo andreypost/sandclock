@@ -25,7 +25,8 @@
         "svg": ["svg"],
         "utils": ["utils"],
         "views": ["views"],
-        "store": ["store"],
+        "store": ["store/root.store"],
+        "reducer": ["store/root.reducer"],
         //   "@/*": ["*"]
     },
     "resolveJsonModule": true,

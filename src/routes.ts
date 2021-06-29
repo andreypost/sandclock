@@ -8,7 +8,7 @@ const About = lazy(() => import('views/About'))
 const Faq = lazy(() => import('views/Faq'))
 const Friends = lazy(() => import('views/Friends'))
 
-import { SALE_ROUTE, HOME_ROUTE, FUND_ROUTE, DONATE_ROUTE, WILL_ROUTE, ABOUT_ROUTE, FAQ_ROUTE, FRIENDS_ROUTE } from './utils/routes.constants'
+import { SALE_ROUTE, HOME_ROUTE, FUND_ROUTE, DONATE_ROUTE, WILL_ROUTE, ABOUT_ROUTE, FAQ_ROUTE, FRIENDS_ROUTE } from 'utils/routes.constants'
 
 export const publicRoutes = [
     {

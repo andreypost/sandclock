@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { RootState } from 'store/rootReducer'
+import { RootState } from 'reducer'
 
 export interface InfoModalState {
   value: string;

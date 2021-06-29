@@ -164,11 +164,6 @@ const dbSuggestions = JSON.parse(JSON.stringify([
 //   setSuggestions: (arg0: any) => void
 // }
 
-// interface Props {
-//   header: string;
-//   orgs: [{ title: string, type: string, mission: string }];
-// }
-
 interface Options {
   boxIndex: number
   inputIndex: number
@@ -184,7 +179,6 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
     [opacity, setPageView] = useState(''),
     { suggestions, setSuggestions } = useContext(SuggestionsContext),
     [ownForm, setOwnForm] = useState({ form_1: '', form_2: '' }),
-    // [infoMessage, setInfoMessage] = useState({ value: '', class: '' }),
     [orgInfoOverlay, setOrgInfoOverlay] = useState({ value: { title: title, type: type, mission: mission }, class: '' }),
     [nameOwnForm, setNameOwnForm] = useState(''),
     [typeOwnForm, setTypeOwnForm] = useState({ value: '', org: '', individual: '' }),
@@ -311,10 +305,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
   }
   useEffect(() => {
     setTimeout(() => setPageView('active'))
-    if (suggestions && suggestions.length === 0) {
-      getAllSuggestions()  // fetch results
-      console.log(suggestions)
-    }
+    if (suggestions.length < 1) getAllSuggestions()  // fetch results
     // if (Object.entries(suggestions).length === 0) getAllSuggestions()
     const unsetState = (e: { key: string }) => {
       if (e.key === 'Escape') {
@@ -397,12 +388,6 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
           </form>
         </div>
       </main>
-      {/* <div className={'modal info ' + infoMessage.class} onClick={e => { if (e.target === e.currentTarget) setInfoMessage({ value: '', class: '' }) }}>
-        <article>
-          <h6>{infoMessage.value}</h6>
-          <p className="goBack" onClick={() => setInfoMessage({ value: '', class: '' })}>← Go back</p>
-        </article>
-      </div> */}
       <InfoModal />
       <div className={'modal ' + ownForm.form_1} onClick={e => { if (e.target === e.currentTarget) setOwnForm({ form_1: '', form_2: '' }) }}>
         <form action="" id="individualStartForm" onSubmit={handleOwnTypeForm}>
@@ -414,12 +399,6 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
               <input type="button" value="Org" className={typeOwnForm.org} onClick={() => setTypeOwnForm({ value: 'Org', org: 'active', individual: '' })} />
               <input type="button" value="Individual" className={typeOwnForm.individual} onClick={() => setTypeOwnForm({ value: 'Individual', org: '', individual: 'active' })} />
             </div>
-            {/* <label className="types">Org
-                <input type="checkbox" name="org" onChange={} checked={} />
-            </label>
-            <label className="types">Individual
-                <input type="checkbox" name="individual" onChange={} checked={} />
-            </label> */}
           </div>
           <label htmlFor="address">Address (if known)</label>
           <input type="text" name="address" id="address" placeholder="Street" value={addressOwnForm} onChange={e => setAddressOwnForm(e.target.value)} autoComplete="off" />
