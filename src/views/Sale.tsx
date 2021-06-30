@@ -12,8 +12,7 @@ const Sale: React.FC = () => {
       <header>
         <Nav />
       </header>
-      <main className="section" style={{ marginTop: '180px' }}>
-      </main>
+      <main className="section" style={{ marginTop: '180px' }}></main>
       <Footer />
     </div>
   )

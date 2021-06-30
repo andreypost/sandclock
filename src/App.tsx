@@ -1,15 +1,18 @@
 import React, { createContext, useState, Suspense, lazy } from 'react'
 import {
-    HashRouter,
-    // BrowserRouter as Router,
+  HashRouter,
+  // BrowserRouter as Router,
 } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from 'store'
 // import { ConnectedRouter } from 'connected-react-router'
 // import { PersistGate } from 'redux-persist/integration/react'
 interface SCProps {
-    suggestions: Array<{ header: string, orgs: [{ title: string, type: string, mission: string }] }>
-    setSuggestions: (arg0: any) => void
+  suggestions: Array<{
+    header: string
+    orgs: [{ title: string; type: string; mission: string }]
+  }>
+  setSuggestions: (arg0: any) => void
 }
 
 export const SuggestionsContext = createContext({} as SCProps)
@@ -21,25 +24,24 @@ export const SuggestionsContext = createContext({} as SCProps)
 const AppRouter = lazy(() => import('./AppRouter'))
 
 const App: React.FC = () => {
-    const [suggestions, setSuggestions] = useState([])
-    return (
-        <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
-            <Provider store={store}>
-                <HashRouter>
-                    {/* <BrowserRouter basename="/"> */}
-                    <Suspense fallback>
-                        <AppRouter />
-                    </Suspense>
-                    {/* </BrowserRouter> */}
-                </HashRouter>
-            </Provider>
-        </SuggestionsContext.Provider>
-    )
+  const [suggestions, setSuggestions] = useState([])
+
+  return (
+    <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
+      <Provider store={store}>
+        <HashRouter>
+          {/* <BrowserRouter basename="/"> */}
+          <Suspense fallback>
+            <AppRouter />
+          </Suspense>
+          {/* </BrowserRouter> */}
+        </HashRouter>
+      </Provider>
+    </SuggestionsContext.Provider>
+  )
 }
 
 export default App
-
-
 
 // const App: React.FC = () => {
 //     const [suggestions, setSuggestions] = useState([])

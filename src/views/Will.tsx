@@ -6,15 +6,15 @@ import circle from 'svg/circle.svg'
 import line from 'svg/line.svg'
 
 interface Options {
-  data: string,
-  commit: string,
+  data: string
+  commit: string
 }
 
 const Will: React.FC = (props, { data, commit }: Options) => {
   // const [commits, setCommits] = useState<string[]>([]) // useState<Array<{ data: string, commit: string }>>([])
   const [opacity, setPageView] = useState(''),
     [basicText, setBasicText] = useState(''),
-    [commits, setCommits] = useState([{ data, commit }]),
+    // [commits, setCommits] = useState([{ data, commit }]),
     [userRepo, setUserRepo] = useState('')
 
   const handleTextareaInput = (e: { target: any }) => {
@@ -54,10 +54,10 @@ const Will: React.FC = (props, { data, commit }: Options) => {
     // const arr = [...commits]
     fetch(url, {
       headers: {
-        'User-Agent': 'Our script'
-      }
+        'User-Agent': 'Our script',
+      },
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((body) => console.log(body))
     // .catch(() => )
     // const response = await fetch(url, {
@@ -81,7 +81,7 @@ const Will: React.FC = (props, { data, commit }: Options) => {
   }
 
   useEffect(() => {
-    setTimeout(() => setPageView('active'));
+    setTimeout(() => setPageView('active'))
     const text = localStorage.getItem('basicText')
     if (text) setBasicText(text)
     /*async function* getCommits(repo: string) {
@@ -115,7 +115,6 @@ const Will: React.FC = (props, { data, commit }: Options) => {
       // console.log(arr)
       setCommits(arr)
     })();*/
-
   }, [])
   return (
     <div className={'fallback willpage ' + opacity}>
@@ -125,7 +124,6 @@ const Will: React.FC = (props, { data, commit }: Options) => {
       <main>
         <nav className="section progress">
           <ul>
-
             <li className="circle active">
               <img src={circle} alt="" />
               <p>Basics</p>
@@ -184,7 +182,6 @@ const Will: React.FC = (props, { data, commit }: Options) => {
               <img src={circle} alt="" />
               <p>Finalize</p>
             </li>
-
           </ul>
         </nav>
         <section className="section header">
@@ -199,8 +196,15 @@ const Will: React.FC = (props, { data, commit }: Options) => {
               <label htmlFor="email">Email address</label>
               <input type="email" name="email" id="email" />
               <label htmlFor="textarea">Describe your story...</label>
-              <textarea name="textarea" id="textarea" value={basicText} onChange={handleTextareaInput} />
-              <button type="submit" form="basic">Subscribe</button>
+              <textarea
+                name="textarea"
+                id="textarea"
+                value={basicText}
+                onChange={handleTextareaInput}
+              />
+              <button type="submit" form="basic">
+                Subscribe
+              </button>
             </form>
           </div>
         </div>
@@ -211,7 +215,6 @@ const Will: React.FC = (props, { data, commit }: Options) => {
           <input type="text" name="repo" id="repo" value={userRepo} onChange={e => setUserRepo(e.target.value)} />
           <button type="button" onClick={() => HandleCommits()}>GET COMMITS</button>
         </div> */}
-
       </main>
       <Footer />
     </div>

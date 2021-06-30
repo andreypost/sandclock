@@ -20,9 +20,18 @@ const Fund: React.FC = () => {
         <Nav />
         <Banner>
           <h1>Select Your Risk Profile.</h1>
-          <h5>Earn yield on your deposits using a myriad of curated DeFi protocols, and practice safety by purchasing insurance whenever possible.</h5>
-          <h5>At Sandclock, we give you two options to choose from: a variable-rate tranche, and fixed-rate vault.
-            The variable-rate tranch combines fixed and variable rate vaults to give you a greater upside. The fixed-rate vault ensures maximum stability for the chosen yield. Regardless, both are zero-loss.</h5>
+          <h5>
+            Earn yield on your deposits using a myriad of curated DeFi
+            protocols, and practice safety by purchasing insurance whenever
+            possible.
+          </h5>
+          <h5>
+            At Sandclock, we give you two options to choose from: a
+            variable-rate tranche, and fixed-rate vault. The variable-rate
+            tranch combines fixed and variable rate vaults to give you a greater
+            upside. The fixed-rate vault ensures maximum stability for the
+            chosen yield. Regardless, both are zero-loss.
+          </h5>
         </Banner>
       </header>
       <main>
@@ -37,8 +46,13 @@ const Fund: React.FC = () => {
                     aum: 'UST',
                     api: '85%',
                     media: <img src={logo} alt="" />,
-                    link: <a href="">Sandclock<img src={link} alt="" /></a>,
-                    actions: <button className="soon">Soon™</button>
+                    link: (
+                      <a href="">
+                        Sandclock
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button className="soon">Soon™</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -46,8 +60,13 @@ const Fund: React.FC = () => {
                     aum: 'USDP',
                     api: '60%',
                     media: <img src={risk_yearn} alt="" />,
-                    link: <a href="">Yearn<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        Yearn
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -55,8 +74,13 @@ const Fund: React.FC = () => {
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
                     media: <img src={risk_mph} alt="" />,
-                    link: <a href="">88MPH<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        88MPH
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -64,8 +88,13 @@ const Fund: React.FC = () => {
                     aum: 'USDP',
                     api: '60%',
                     media: <img src={risk_yearn} alt="" />,
-                    link: <a href="">Yearn<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        Yearn
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -73,8 +102,13 @@ const Fund: React.FC = () => {
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
                     media: <img src={risk_mph} alt="" />,
-                    link: <a href="">88MPH<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        88MPH
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -82,8 +116,13 @@ const Fund: React.FC = () => {
                     aum: 'USDP',
                     api: '60%',
                     media: <img src={risk_yearn} alt="" />,
-                    link: <a href="">Yearn<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        Yearn
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -91,8 +130,13 @@ const Fund: React.FC = () => {
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
                     media: <img src={risk_mph} alt="" />,
-                    link: <a href="">88MPH<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        88MPH
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
               </article>
@@ -103,8 +147,13 @@ const Fund: React.FC = () => {
                     aum: 'UST',
                     api: '85%',
                     media: <img src={logo} alt="" />,
-                    link: <a href="">Sandclock<img src={link} alt="" /></a>,
-                    actions: <button className="soon">Soon™</button>
+                    link: (
+                      <a href="">
+                        Sandclock
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button className="soon">Soon™</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -112,8 +161,13 @@ const Fund: React.FC = () => {
                     aum: 'USDP',
                     api: '60%',
                     media: <img src={risk_yearn} alt="" />,
-                    link: <a href="">Yearn<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        Yearn
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -121,8 +175,13 @@ const Fund: React.FC = () => {
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
                     media: <img src={risk_mph} alt="" />,
-                    link: <a href="">88MPH<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        88MPH
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
                 <Profiles>
@@ -130,8 +189,13 @@ const Fund: React.FC = () => {
                     aum: 'sUSD',
                     api: '?% (fixed) + ?%',
                     media: <img src={risk_mph} alt="" />,
-                    link: <a href="">88MPH<img src={link} alt="" /></a>,
-                    actions: <button>Deposit</button>
+                    link: (
+                      <a href="">
+                        88MPH
+                        <img src={link} alt="" />
+                      </a>
+                    ),
+                    actions: <button>Deposit</button>,
                   }}
                 </Profiles>
               </article>

@@ -17,10 +17,7 @@ const Faq: React.FC = () => {
           <h1>Faq</h1>
         </Banner>
       </header>
-      <main className="section">
-
-
-      </main>
+      <main className="section"></main>
       <Footer />
     </div>
   )

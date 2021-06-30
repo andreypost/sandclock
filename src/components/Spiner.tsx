@@ -2,21 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Div = styled.div`
-    display: inline-block;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    width: 80px;
-    height: 80px;
-    right: 0;
-    top: 0;
-    bottom: 0;
+  display: inline-block;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  right: 0;
+  top: 0;
+  bottom: 0;
   div {
     transform-origin: 40px 40px;
     animation: lds-spinner 1.2s linear infinite;
   }
   div:after {
-    content: " ";
+    content: ' ';
     display: block;
     position: absolute;
     top: 3px;
@@ -82,11 +82,23 @@ const Div = styled.div`
       opacity: 0;
     }
   }
-`;
+`
 const Spiner: React.FC = (): any => (
   <Div>
-    <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div className="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </Div>
 )
 export default Spiner
-

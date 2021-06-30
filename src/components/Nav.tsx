@@ -18,15 +18,23 @@ const Nav: React.FC = () => (
         </li>
         <li className="fund">
           <Link to="/fund">App</Link>
-          <p className="tooltip">Set up a fund for yourself or your family and provision for the future!</p>
+          <p className="tooltip">
+            Set up a fund for yourself or your family and provision for the
+            future!
+          </p>
         </li>
         <li className="donate">
           <Link to="/donate">No-Loss Donation</Link>
-          <p className="tooltip">Make a zero-loss donation to your favorite charities, alma mater, or individual(s)!</p>
+          <p className="tooltip">
+            Make a zero-loss donation to your favorite charities, alma mater, or
+            individual(s)!
+          </p>
         </li>
         <li className="will">
           <Link to="/will">Get a Free Will</Link>
-          <p className="tooltip">Want a free will or revocable living trust? We’ve got you covered.</p>
+          <p className="tooltip">
+            Want a free will or revocable living trust? We’ve got you covered.
+          </p>
         </li>
         <li className="about">
           <Link to="/about">About</Link>
@@ -35,7 +43,9 @@ const Nav: React.FC = () => (
               <Link to="/faq">FAQ</Link>
             </li>
             <li className="friends">
-              <Link to="/friends">Projects & <br /> Friends</Link>
+              <Link to="/friends">
+                Projects & <br /> Friends
+              </Link>
             </li>
           </ul>
         </li>
