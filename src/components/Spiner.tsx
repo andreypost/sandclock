@@ -83,7 +83,7 @@ const Div = styled.div`
     }
   }
 `
-const Spiner: React.FC = (): any => (
+const Spiner: React.FC = () => (
   <Div>
     <div className="lds-spinner">
       <div></div>
