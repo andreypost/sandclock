@@ -14,12 +14,12 @@ const Div = styled.div`
     padding: 20px 20px 10px;
     background: #fedeff;
     text-align: center;
-  }
-
-  h6 {
-    font-size: 18px;
-    line-height: 21px;
-    margin-bottom: 10px;
+    
+    h6 {
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 10px;
+    }
   }
 `
 

@@ -78,13 +78,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => setPageView('active'))
     const unsetState = (e: { key: string }) => {
-      if (e.key === 'Escape') {
-        dispatch(unsetInfoModal())
-      }
+      if (e.key === 'Escape') dispatch(unsetInfoModal())
     }
-    document.addEventListener('keydown', (e) => unsetState(e))
+    document.addEventListener('keydown', e => unsetState(e))
     return document.removeEventListener('keydown', unsetState)
-  }, [])
+  }, [dispatch])
   return (
     <div className={'fallback homepage ' + opacity}>
       <header>

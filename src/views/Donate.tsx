@@ -399,7 +399,7 @@ const Donate: React.FC<Options> = ({
     }
     document.addEventListener('keydown', (e) => unsetState(e))
     return document.removeEventListener('keydown', unsetState)
-  }, [])
+  }, [dispatch, getAllSuggestions, suggestions.length])
   return (
     <div className={'fallback donatepage ' + opacity}>
       <header>

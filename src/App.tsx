@@ -1,10 +1,7 @@
 import React, { createContext, useState, Suspense, lazy } from 'react'
-import {
-  HashRouter,
-  // BrowserRouter as Router,
-} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from 'store'
+import Spiner from 'Spiner'
 // import { ConnectedRouter } from 'connected-react-router'
 // import { PersistGate } from 'redux-persist/integration/react'
 interface SCProps {
@@ -29,19 +26,16 @@ const App: React.FC = () => {
   return (
     <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
       <Provider store={store}>
-        <HashRouter>
-          {/* <BrowserRouter basename="/"> */}
-          <Suspense fallback>
-            <AppRouter />
-          </Suspense>
-          {/* </BrowserRouter> */}
-        </HashRouter>
+        <Suspense fallback={<Spiner />}>
+          <AppRouter />
+        </Suspense>
       </Provider>
     </SuggestionsContext.Provider>
   )
 }
 
 export default App
+
 
 // const App: React.FC = () => {
 //     const [suggestions, setSuggestions] = useState([])
