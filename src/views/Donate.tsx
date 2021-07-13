@@ -4,21 +4,18 @@ import axios from 'axios'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
-import InfoModal from 'components/Info.modal'
+import Message from 'modals/Message'
 import {
-  unsetInfoModal,
-  // retrieveInfoModal,
-  typeInfoModal,
-  fieldInfoModal,
-  succsessInfoModal,
-  errorInfoModal,
-  exceedInfoModal,
-  sentInfoModal,
-} from 'components/info.modal.slice'
+  messageErrorModal,
+  messageExceedModal,
+  messageSentModal,
+} from 'modals/message.modal.slice'
 import { useAppDispatch } from 'utils/hooks'
 import info_circle from 'svg/info_circle.svg'
-import ogr_info_dog from 'svg/ogr_info_dog.svg'
 import { SuggestionsContext } from '../index'
+import IndividualOwnForms from 'modals/IndividualOwnForms'
+import { missionTypeModal, ownFormStart } from 'modals/modal.slice'
+import Mission from 'modals/Mission'
 
 // mock fetch server
 const dbSuggestions = JSON.parse(
@@ -200,51 +197,19 @@ const dbSuggestions = JSON.parse(
 interface Options {
   boxIndex: number
   inputIndex: number
-  title?: string
-  type?: string
-  mission?: string
   new(name: string): { string: any }[]
 }
 
-// const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
-const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
+// const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0}: Options) => {
+const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) => {
   const dispatch = useAppDispatch(),
     [opacity, setPageView] = useState(''),
     { suggestions, setSuggestions } = useContext(SuggestionsContext),
-    [ownForm, setOwnForm] = useState({ form_1: '', form_2: '' }),
-    [orgInfoOverlay, setOrgInfoOverlay] = useState({
-      value: { title: title, type: type, mission: mission },
-      class: '',
-    }),
-    [nameOwnForm, setNameOwnForm] = useState(''),
-    [typeOwnForm, setTypeOwnForm] = useState({
-      value: '',
-      org: '',
-      individual: '',
-    }),
-    [addressOwnForm, setAddressOwnForm] = useState(''),
-    [cityOwnForm, setCityOwnForm] = useState(''),
-    [stateOwnForm, setStateOwnForm] = useState(''),
-    [codeOwnForm, setCodeOwnForm] = useState(''),
-    [emailOwnForm, setEmailOwnForm] = useState(''),
-    [einOwnForm, setEinOwnForm] = useState(''),
-    [messageOwnForm, setMessageOwnForm] = useState(''),
     [levelDonate, setLevelDonate] = useState({
       value: 0,
       submit: '',
       class: '',
-    }),
-    user = {
-      name: nameOwnForm,
-      type: typeOwnForm.value,
-      address: addressOwnForm,
-      city: cityOwnForm,
-      state: stateOwnForm,
-      code: codeOwnForm,
-      email: emailOwnForm,
-      Ein: einOwnForm,
-      message: messageOwnForm,
-    }
+    })
 
   const handleEpisodeCollectionView = (e: { target: any }) => {
     if (e.target.classList.contains('active')) return
@@ -273,43 +238,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
     //   .then(results => setSuggestions(results))
     //   .catch(() => dispatch(retrieveInfoModal()))
   }, [setSuggestions])
-  const handleOwnTypeForm = (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-    if (!typeOwnForm.value) {
-      dispatch(typeInfoModal())
-      return
-    }
-    setOwnForm({ form_1: '', form_2: 'active' })
-  }
-  const handleOwnSubmitForm = (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-    console.log(user)
-    const field = emailOwnForm || einOwnForm
-    if (!field) {
-      dispatch(fieldInfoModal())
-      return
-    }
-    axios
-      .post(`https://www.sandclock.org/api/subscribe`, {
-        body: user,
-        headers: { 'Content-Type:': 'application/json' },
-      })
-      .then(() => {
-        dispatch(succsessInfoModal())
-        setOwnForm({ form_1: '', form_2: '' })
-        setNameOwnForm('')
-        setTypeOwnForm({ value: '', org: '', individual: '' })
-        setAddressOwnForm('')
-        setCityOwnForm('')
-        setStateOwnForm('')
-        setCodeOwnForm('')
-        setEmailOwnForm('')
-        setEinOwnForm('')
-        setMessageOwnForm('')
-      })
-      .catch(() => dispatch(errorInfoModal()))
-    // .finally(() => dispatch(unsetInfoModal())
-  }
+
   const handlePercentLevelDonate = (e: { target: any }) => {
     let percent = 0
     e.target
@@ -351,7 +280,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
   }) => {
     e.preventDefault()
     if (levelDonate.value > 100) {
-      dispatch(exceedInfoModal())
+      dispatch(messageExceedModal())
       return
     }
     const data = new FormData(),
@@ -365,7 +294,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
         headers: { 'Content-Type:': 'application/json' },
       })
       .then(() => {
-        dispatch(sentInfoModal())
+        dispatch(messageSentModal())
         setLevelDonate({ value: 0, submit: '', class: '' })
         document
           .querySelectorAll('.episode')
@@ -374,28 +303,14 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
           .querySelectorAll('.donate_item')
           .forEach((item) => item.classList.remove('active'))
       })
-      .catch(() => dispatch(errorInfoModal()))
+      .catch(() => dispatch(messageErrorModal()))
     // .finally(() => )
   }
   useEffect(() => {
     setTimeout(() => setPageView('active'))
     if (suggestions.length < 1) getAllSuggestions() // fetch results
     // if (Object.entries(suggestions).length === 0) getAllSuggestions()
-
-    const unsetState = () => {
-      dispatch(unsetInfoModal())
-      setOwnForm({ form_1: '', form_2: '' })
-      setOrgInfoOverlay({ value: { title: '', type: '', mission: '' }, class: '', })
-    }
-    const checkKeyDown = (e: { key: string }) => {
-      if (e.key === 'Escape') unsetState()
-    }
-    document.addEventListener('keydown', (e) => checkKeyDown(e))
-    return (
-      unsetState(),
-      document.removeEventListener('keydown', checkKeyDown)
-    )
-  }, [dispatch, getAllSuggestions, suggestions.length])
+  }, [getAllSuggestions, suggestions.length])
   return (
     <div className={'fallback donatepage ' + opacity}>
       <header>
@@ -443,14 +358,8 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
                 suggestions.map((obj, index) => (
                   <div
                     className={'boxes ' + (index === 0 ? 'active' : '')}
-                    key={obj.header}
-                  >
-                    <div
-                      className="individual"
-                      onClick={() =>
-                        setOwnForm({ form_1: 'active', form_2: '' })
-                      }
-                    >
+                    key={obj.header}>
+                    <div className="individual" onClick={() => dispatch(ownFormStart())}>
                       <h4>
                         Individual <br /> / <br /> Add Your Own
                       </h4>
@@ -469,19 +378,9 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
                           src={info_circle}
                           alt=""
                           className="info"
-                          onClick={(e) => {
-                            const episode =
-                              e.currentTarget.closest<HTMLDivElement>(
-                                '.episode',
-                              )
-                            setOrgInfoOverlay({
-                              value: {
-                                title: episode?.dataset.title,
-                                type: episode?.dataset.type,
-                                mission: episode?.dataset.mission,
-                              },
-                              class: 'active',
-                            })
+                          onClick={e => {
+                            const episode = e.currentTarget.closest<HTMLDivElement>('.episode')
+                            dispatch(missionTypeModal({ title: episode?.dataset.title, type: episode?.dataset.type, mission: episode?.dataset.mission }))
                           }}
                         />
                         <h4>{orgs.title}</h4>
@@ -555,190 +454,9 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, 
         </div>
       </main>
       <Footer />
-      <InfoModal />
-      <div
-        className={'modal ' + ownForm.form_1}
-        onClick={(e) => {
-          if (e.target === e.currentTarget)
-            setOwnForm({ form_1: '', form_2: '' })
-        }}
-      >
-        <form action="" id="individualStartForm" onSubmit={handleOwnTypeForm}>
-          <label htmlFor="name">Recipient’s name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={nameOwnForm}
-            placeholder="Name Surname"
-            pattern="[A-Za-z]{2,}\s[A-Za-z]{2,}"
-            onChange={(e) => setNameOwnForm(e.target.value)}
-            autoComplete="off"
-            required
-          />
-          <div className="individual_types">
-            <label>Type</label>
-            <div>
-              <input
-                type="button"
-                value="Org"
-                className={typeOwnForm.org}
-                onClick={() =>
-                  setTypeOwnForm({
-                    value: 'Org',
-                    org: 'active',
-                    individual: '',
-                  })
-                }
-              />
-              <input
-                type="button"
-                value="Individual"
-                className={typeOwnForm.individual}
-                onClick={() =>
-                  setTypeOwnForm({
-                    value: 'Individual',
-                    org: '',
-                    individual: 'active',
-                  })
-                }
-              />
-            </div>
-          </div>
-          <label htmlFor="address">Address (if known)</label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Street"
-            value={addressOwnForm}
-            onChange={(e) => setAddressOwnForm(e.target.value)}
-            autoComplete="off"
-          />
-          <div className="individual_city">
-            <input
-              type="text"
-              name="city"
-              id="city"
-              placeholder="City"
-              value={cityOwnForm}
-              onChange={(e) => setCityOwnForm(e.target.value)}
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              name="state"
-              id="state"
-              placeholder="State"
-              value={stateOwnForm}
-              onChange={(e) => setStateOwnForm(e.target.value)}
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              name="code"
-              id="code"
-              placeholder="Zip Code"
-              value={codeOwnForm}
-              onChange={(e) => setCodeOwnForm(e.target.value)}
-              autoComplete="off"
-            />
-          </div>
-          <button type="submit" form="individualStartForm">
-            →
-          </button>
-        </form>
-      </div>
-      <div
-        className={'modal ' + ownForm.form_2}
-        onClick={(e) => {
-          if (e.target === e.currentTarget)
-            setOwnForm({ form_1: 'active', form_2: '' })
-        }}
-      >
-        <form
-          action=""
-          id="individualSubmitForm"
-          onSubmit={handleOwnSubmitForm}
-        >
-          <label htmlFor="email">Email (if known)</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={emailOwnForm}
-            placeholder="email@com.net"
-            onChange={(e) => setEmailOwnForm(e.target.value)}
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-            autoComplete="off"
-          />
-          <label htmlFor="ein">EIN (if known/applicable)</label>
-          <input
-            type="text"
-            name="ein"
-            id="ein"
-            value={einOwnForm}
-            placeholder="XX-XXXXXXX"
-            pattern="[0-9]{2}-[0-9]{8,}"
-            onChange={(e) => setEinOwnForm(e.target.value)}
-            autoComplete="off"
-          />
-          <label htmlFor="message">
-            Message or Additional Information (optional)
-          </label>
-          <textarea
-            name="message"
-            id="message"
-            value={messageOwnForm}
-            onChange={(e) => setMessageOwnForm(e.target.value)}
-            autoComplete="off"
-          ></textarea>
-          <div>
-            <input
-              type="button"
-              value="←"
-              onClick={() => setOwnForm({ form_1: 'active', form_2: '' })}
-            />
-            <button type="submit" form="individualSubmitForm">
-              Add
-            </button>
-          </div>
-        </form>
-      </div>
-      <div
-        className={'modal orginfo ' + orgInfoOverlay.class}
-        onClick={(e) => {
-          if (e.target === e.currentTarget)
-            setOrgInfoOverlay({
-              value: { title: '', type: '', mission: '' },
-              class: '',
-            })
-        }}
-      >
-        <div>
-          <div className="orginfo_header">
-            <img src={ogr_info_dog} alt="" />
-            <h3>{orgInfoOverlay.value.title}</h3>
-          </div>
-          <article className="orginfo_article">
-            <h4>Type</h4>
-            <p>{orgInfoOverlay.value.type}</p>
-            <h4>Mission</h4>
-            <p>{orgInfoOverlay.value.mission}</p>
-          </article>
-          <p
-            className="goBack"
-            onClick={() =>
-              setOrgInfoOverlay({
-                value: { title: '', type: '', mission: '' },
-                class: '',
-              })
-            }
-          >
-            ← Go back
-          </p>
-        </div>
-      </div>
+      <Message />
+      <IndividualOwnForms />
+      <Mission />
     </div>
   )
 }

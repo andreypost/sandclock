@@ -5,12 +5,12 @@ import axios from 'axios'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
-import InfoModal from 'components/Info.modal'
+import Message from 'modals/Message'
 import {
-  errorInfoModal,
-  succsessInfoModal,
-  unsetInfoModal,
-} from 'components/info.modal.slice'
+  messageErrorModal,
+  messageSuccsessModal,
+  unsetMessageModal,
+} from 'modals/message.modal.slice'
 import { useAppDispatch } from 'utils/hooks'
 import ok from 'svg/ok.svg'
 import git from 'svg/git.svg'
@@ -64,11 +64,11 @@ const Home: React.FC = () => {
         headers: { 'Content-Type:': 'application/json' },
       })
       .then(() => {
-        dispatch(succsessInfoModal())
+        dispatch(messageSuccsessModal())
         handleEmailFormImage(true)
       })
       .catch(() => {
-        dispatch(errorInfoModal())
+        dispatch(messageErrorModal())
         handleEmailFormImage(false)
       })
       .finally(() => {
@@ -78,11 +78,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => setPageView('active'))
     const unsetState = (e: { key: string }) => {
-      if (e.key === 'Escape') dispatch(unsetInfoModal())
+      if (e.key === 'Escape') dispatch(unsetMessageModal())
     }
     document.addEventListener('keydown', e => unsetState(e))
     return (
-      dispatch(unsetInfoModal()),
+      dispatch(unsetMessageModal()),
       document.removeEventListener('keydown', unsetState)
     )
   }, [dispatch])
@@ -348,7 +348,7 @@ const Home: React.FC = () => {
         </article>
       </main>
       <Footer />
-      <InfoModal />
+      <Message />
     </div>
   )
 }
