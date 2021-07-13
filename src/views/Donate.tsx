@@ -1,21 +1,17 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import './Donate.styles.scss'
+import { SuggestionsContext } from '../index'
 import axios from 'axios'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
 import Message from 'modals/Message'
-import {
-  messageErrorModal,
-  messageExceedModal,
-  messageSentModal,
-} from 'modals/message.modal.slice'
-import { useAppDispatch } from 'utils/hooks'
-import info_circle from 'svg/info_circle.svg'
-import { SuggestionsContext } from '../index'
 import IndividualOwnForms from 'modals/IndividualOwnForms'
-import { missionTypeModal, ownFormStart } from 'modals/modal.slice'
 import Mission from 'modals/Mission'
+import info_circle from 'svg/info_circle.svg'
+import { useAppDispatch } from 'utils/hooks'
+import { messageErrorModal, messageExceedModal, messageSentModal } from 'modals/message.modal.slice'
+import { missionTypeModal, ownFormStart } from 'modals/modal.slice'
 
 // mock fetch server
 const dbSuggestions = JSON.parse(

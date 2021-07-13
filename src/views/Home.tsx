@@ -6,11 +6,7 @@ import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
 import Message from 'modals/Message'
-import {
-  messageErrorModal,
-  messageSuccsessModal,
-  unsetMessageModal,
-} from 'modals/message.modal.slice'
+import { messageErrorModal, messageSuccsessModal, unsetMessageModal } from 'modals/message.modal.slice'
 import { useAppDispatch } from 'utils/hooks'
 import ok from 'svg/ok.svg'
 import git from 'svg/git.svg'

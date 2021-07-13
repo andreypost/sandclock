@@ -43,7 +43,6 @@ export const {
   missionTypeModal,
 } = modalSlice.actions
 
-// Other code such as selectors can use the imported `RootState` type
 export const selectModalActive = (state: RootState) => state.modal.active
 export const selectModalTitle = (state: RootState) => state.modal.title
 export const selectModalType = (state: RootState) => state.modal.type

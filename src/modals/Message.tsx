@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
 import { unsetMessageModal, selectMessageValue } from './message.modal.slice'
-import styled from 'styled-components'
 
 const Div = styled.div`
 

@@ -3,12 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
 import { selectModalActive, ownFormStart, ownFormEnd, unsetModal } from './modal.slice'
-import {
-  messageTypeModal,
-  messageFieldModal,
-  messageSuccsessModal,
-  messageErrorModal,
-} from 'modals/message.modal.slice'
+import { messageTypeModal, messageFieldModal, messageSuccsessModal, messageErrorModal } from 'modals/message.modal.slice'
 
 const Div = styled.div`
 
