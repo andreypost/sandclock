@@ -346,12 +346,12 @@ header {
   transition      : opacity 0.4s, z-index 0.1s 0.4s;
 
   &.active {
-    z-index   : 99;
+    z-index   : 999;
     opacity   : 1;
     transition: z-index 0.1s, opacity 0.4s 0.1s;
 
     &.info {
-      z-index: 999;
+      z-index: 9999;
     }
 
     &.info>article,

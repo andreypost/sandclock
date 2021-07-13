@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import { infoModalSlice } from 'components/info.modal.slice'
+import infoModalSlice from 'components/info.modal.slice'
 
 export const rootReducer = combineReducers({
-  infoModal: infoModalSlice.reducer,
+  infoModal: infoModalSlice,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

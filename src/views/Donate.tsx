@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import './Donate.styles.scss'
 import axios from 'axios'
 import Nav from 'Nav'
@@ -7,7 +7,7 @@ import Footer from 'Footer'
 import InfoModal from 'components/Info.modal'
 import {
   unsetInfoModal,
-  retrieveInfoModal,
+  // retrieveInfoModal,
   typeInfoModal,
   fieldInfoModal,
   succsessInfoModal,
@@ -18,7 +18,7 @@ import {
 import { useAppDispatch } from 'utils/hooks'
 import info_circle from 'svg/info_circle.svg'
 import ogr_info_dog from 'svg/ogr_info_dog.svg'
-import { SuggestionsContext } from '../App'
+import { SuggestionsContext } from '../index'
 
 // mock fetch server
 const dbSuggestions = JSON.parse(
@@ -207,13 +207,7 @@ interface Options {
 }
 
 // const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
-const Donate: React.FC<Options> = ({
-  boxIndex = 0,
-  inputIndex = 0,
-  title,
-  type,
-  mission,
-}: Options) => {
+const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0, title, type, mission }: Options) => {
   const dispatch = useAppDispatch(),
     [opacity, setPageView] = useState(''),
     { suggestions, setSuggestions } = useContext(SuggestionsContext),
@@ -273,12 +267,12 @@ const Donate: React.FC<Options> = ({
       .querySelectorAll<HTMLDivElement>('.orgs_container .boxes')
     [target.dataset.tab]?.classList.add('active')
   }
-  const getAllSuggestions = () => {
+  const getAllSuggestions = useCallback(() => {
     setSuggestions(dbSuggestions) // remove on production
     // axios.get('https://www.sandclock.org/api')
     //   .then(results => setSuggestions(results))
     //   .catch(() => dispatch(retrieveInfoModal()))
-  }
+  }, [setSuggestions])
   const handleOwnTypeForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     if (!typeOwnForm.value) {
@@ -387,18 +381,20 @@ const Donate: React.FC<Options> = ({
     setTimeout(() => setPageView('active'))
     if (suggestions.length < 1) getAllSuggestions() // fetch results
     // if (Object.entries(suggestions).length === 0) getAllSuggestions()
-    const unsetState = (e: { key: string }) => {
-      if (e.key === 'Escape') {
-        dispatch(unsetInfoModal())
-        setOwnForm({ form_1: '', form_2: '' })
-        setOrgInfoOverlay({
-          value: { title: '', type: '', mission: '' },
-          class: '',
-        })
-      }
+
+    const unsetState = () => {
+      dispatch(unsetInfoModal())
+      setOwnForm({ form_1: '', form_2: '' })
+      setOrgInfoOverlay({ value: { title: '', type: '', mission: '' }, class: '', })
     }
-    document.addEventListener('keydown', (e) => unsetState(e))
-    return document.removeEventListener('keydown', unsetState)
+    const checkKeyDown = (e: { key: string }) => {
+      if (e.key === 'Escape') unsetState()
+    }
+    document.addEventListener('keydown', (e) => checkKeyDown(e))
+    return (
+      unsetState(),
+      document.removeEventListener('keydown', checkKeyDown)
+    )
   }, [dispatch, getAllSuggestions, suggestions.length])
   return (
     <div className={'fallback donatepage ' + opacity}>

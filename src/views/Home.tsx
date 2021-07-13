@@ -81,7 +81,10 @@ const Home: React.FC = () => {
       if (e.key === 'Escape') dispatch(unsetInfoModal())
     }
     document.addEventListener('keydown', e => unsetState(e))
-    return document.removeEventListener('keydown', unsetState)
+    return (
+      dispatch(unsetInfoModal()),
+      document.removeEventListener('keydown', unsetState)
+    )
   }, [dispatch])
   return (
     <div className={'fallback homepage ' + opacity}>
