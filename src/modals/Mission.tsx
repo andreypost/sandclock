@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
 import { selectModalTitle, selectModalActive, selectModalType, selectModalMission, unsetModal } from './modal.slice'
@@ -99,16 +99,8 @@ const Mission = () => {
     missionType = useAppSelector(selectModalType),
     missionMission = useAppSelector(selectModalMission),
     dispatch = useAppDispatch()
-
-  useEffect(() => {
-    const checkKeyDown = (e: { key: string }) => {
-      if (e.key === 'Escape') dispatch(unsetModal())
-    }
-    document.addEventListener('keydown', (e) => checkKeyDown(e))
-    return document.removeEventListener('keydown', checkKeyDown)
-  }, [dispatch])
   return (
-    <Div className={missionState} onClick={(e) => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
+    <Div className={missionState} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
       <div>
         <div className="orginfo_header">
           <img src={ogr_info_dog} alt="" />

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const webpack = require('webpack')
 // const path = require('path');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -28,6 +27,5 @@ module.exports = {
       'process.env.name': JSON.stringify('development_mode'),
     }),
     new webpack.HotModuleReplacementPlugin(), // HMR should never be used in production
-    new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
 }

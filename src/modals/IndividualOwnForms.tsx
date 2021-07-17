@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
-import { selectModalActive, ownFormStart, ownFormEnd, unsetModal } from './modal.slice'
+import { selectModalActive, ownFormStartModal, ownFormEndModal, unsetModal } from './modal.slice'
 import { messageTypeModal, messageFieldModal, messageSuccsessModal, messageErrorModal } from 'modals/message.modal.slice'
 
 const Div = styled.div`
@@ -209,7 +209,7 @@ const IndividualOwnForms = () => {
       dispatch(messageTypeModal())
       return
     }
-    dispatch(ownFormEnd())
+    dispatch(ownFormEndModal())
   }
 
   const handleOwnSubmitForm = (e: { preventDefault: () => void }) => {
@@ -240,16 +240,9 @@ const IndividualOwnForms = () => {
       .catch(() => dispatch(messageErrorModal()))
     // .finally(() => dispatch(unsetInfoModal())
   }
-  useEffect(() => {
-    const checkKeyDown = (e: { key: string }) => {
-      if (e.key === 'Escape') dispatch(unsetModal())
-    }
-    document.addEventListener('keydown', (e) => checkKeyDown(e))
-    return document.removeEventListener('keydown', checkKeyDown)
-  }, [dispatch])
   return (
     <>
-      <Div className={modalState + ' startForm'} onClick={(e) => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
+      <Div className={modalState + ' startForm'} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
         <form action="" id="individualStartForm" onSubmit={handleOwnTypeForm}>
           <label htmlFor="name">Recipient’s name</label>
           <input
@@ -259,7 +252,7 @@ const IndividualOwnForms = () => {
             value={nameOwnForm}
             placeholder="Name Surname"
             pattern="[A-Za-z]{2,}\s[A-Za-z]{2,}"
-            onChange={(e) => setNameOwnForm(e.target.value)}
+            onChange={e => setNameOwnForm(e.target.value)}
             autoComplete="off"
             required
           />
@@ -334,7 +327,7 @@ const IndividualOwnForms = () => {
           <button type="submit" form="individualStartForm">→</button>
         </form>
       </Div>
-      <Div className={modalState + ' endForm'} onClick={(e) => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
+      <Div className={modalState + ' endForm'} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
         <form
           action=""
           id="individualSubmitForm"
@@ -376,7 +369,7 @@ const IndividualOwnForms = () => {
             <input
               type="button"
               value="←"
-              onClick={() => dispatch(ownFormStart())}
+              onClick={() => dispatch(ownFormStartModal())}
             />
             <button type="submit" form="individualSubmitForm">
               Add

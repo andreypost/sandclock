@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
 import { unsetMessageModal, selectMessageValue } from './message.modal.slice'
@@ -69,15 +69,8 @@ const Message = () => {
   const messageValue = useAppSelector(selectMessageValue),
     messageState = useAppSelector((state) => state.messageModal.active),
     dispatch = useAppDispatch()
-  useEffect(() => {
-    const checkKeyDown = (e: { key: string }) => {
-      if (e.key === 'Escape') dispatch(unsetMessageModal())
-    }
-    document.addEventListener('keydown', (e) => checkKeyDown(e))
-    return document.removeEventListener('keydown', checkKeyDown)
-  }, [dispatch])
   return (
-    <Div className={messageState} onClick={(e) => { if (e.target === e.currentTarget) dispatch(unsetMessageModal()) }}>
+    <Div className={messageState} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetMessageModal()) }}>
       <article>
         <h6>{messageValue}</h6>
         <p className="goBack" onClick={() => dispatch(unsetMessageModal())}>← Go back</p>

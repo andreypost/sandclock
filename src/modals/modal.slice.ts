@@ -12,10 +12,10 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState: {active: '', title: '', type: '', mission: '' } as ModalState,
   reducers: {
-    ownFormStart: state => {
+    ownFormStartModal: state => {
       state.active = 'ownStartActive'
     },
-    ownFormEnd: state => {
+    ownFormEndModal: state => {
       state.active = 'ownEndActive'
     },
     missionTypeModal: (
@@ -37,10 +37,10 @@ export const modalSlice = createSlice({
 })
 
 export const {
-  ownFormStart,
-  ownFormEnd,
-  unsetModal,
+  ownFormStartModal,
+  ownFormEndModal,
   missionTypeModal,
+  unsetModal,
 } = modalSlice.actions
 
 export const selectModalActive = (state: RootState) => state.modal.active

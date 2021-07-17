@@ -1,13 +1,28 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Message from 'modals/Message'
+import IndividualOwnForms from 'modals/IndividualOwnForms'
+import Mission from 'modals/Mission'
+import { unsetMessageModal } from 'modals/message.modal.slice'
+import { unsetModal } from 'modals/modal.slice'
+import { useAppDispatch } from 'utils/hooks'
 import crypto_ether from 'svg/crypto_ether.svg'
 import crypto_xdai from 'svg/crypto_xdai.svg'
 
-const Footer: React.FC = () => (
+const Footer: React.FC = () => {
+  const dispatch = useAppDispatch()
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, []),
-  (
+    const unsetState = (e: { key: string }) => {
+      if (e.key === 'Escape') {
+        dispatch(unsetMessageModal())
+        dispatch(unsetModal())
+      }
+    }
+    document.addEventListener('keydown', e => unsetState(e))
+    return document.removeEventListener('keydown', unsetState)
+  }, [dispatch])
+  return (
     <footer className="section footer">
       <div className="footer_crypto">
         <p>Powered by</p>
@@ -43,7 +58,10 @@ const Footer: React.FC = () => (
           </a>
         </p>
       </div>
+      <Message />
+      <IndividualOwnForms />
+      <Mission />
     </footer>
   )
-)
+}
 export default Footer

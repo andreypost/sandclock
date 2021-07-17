@@ -5,8 +5,7 @@ import axios from 'axios'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
-import Message from 'modals/Message'
-import { messageErrorModal, messageSuccsessModal, unsetMessageModal } from 'modals/message.modal.slice'
+import { messageErrorModal, messageSuccsessModal } from 'modals/message.modal.slice'
 import { useAppDispatch } from 'utils/hooks'
 import ok from 'svg/ok.svg'
 import git from 'svg/git.svg'
@@ -73,15 +72,7 @@ const Home: React.FC = () => {
   }
   useEffect(() => {
     setTimeout(() => setPageView('active'))
-    const unsetState = (e: { key: string }) => {
-      if (e.key === 'Escape') dispatch(unsetMessageModal())
-    }
-    document.addEventListener('keydown', e => unsetState(e))
-    return (
-      dispatch(unsetMessageModal()),
-      document.removeEventListener('keydown', unsetState)
-    )
-  }, [dispatch])
+  }, [])
   return (
     <div className={'fallback homepage ' + opacity}>
       <header>
@@ -344,7 +335,6 @@ const Home: React.FC = () => {
         </article>
       </main>
       <Footer />
-      <Message />
     </div>
   )
 }

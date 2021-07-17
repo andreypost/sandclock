@@ -4,9 +4,8 @@ import './styles/normalize.css'
 import './styles/common.scss'
 import { Provider } from 'react-redux'
 import { store } from 'store'
-import Spiner from 'Spiner'
+import Spinner from 'Spinner'
 // import './i18n'
-
 
 interface SCProps {
     suggestions: Array<{
@@ -27,13 +26,13 @@ const AppRouter = lazy(() => import('./AppRouter'))
 const App: React.FC = () => {
     const [suggestions, setSuggestions] = useState([])
     return (
-        <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
-            <Provider store={store}>
-                <Suspense fallback={<Spiner />}>
+        <Suspense fallback={<Spinner />}>
+            <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
+                <Provider store={store}>
                     <AppRouter />
-                </Suspense>
-            </Provider>
-        </SuggestionsContext.Provider>
+                </Provider>
+            </SuggestionsContext.Provider>
+        </Suspense>
     )
 }
 

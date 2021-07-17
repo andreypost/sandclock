@@ -5,13 +5,10 @@ import axios from 'axios'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
-import Message from 'modals/Message'
-import IndividualOwnForms from 'modals/IndividualOwnForms'
-import Mission from 'modals/Mission'
 import info_circle from 'svg/info_circle.svg'
 import { useAppDispatch } from 'utils/hooks'
 import { messageErrorModal, messageExceedModal, messageSentModal } from 'modals/message.modal.slice'
-import { missionTypeModal, ownFormStart } from 'modals/modal.slice'
+import { missionTypeModal, ownFormStartModal } from 'modals/modal.slice'
 
 // mock fetch server
 const dbSuggestions = JSON.parse(
@@ -193,7 +190,6 @@ const dbSuggestions = JSON.parse(
 interface Options {
   boxIndex: number
   inputIndex: number
-  new(name: string): { string: any }[]
 }
 
 // const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0}: Options) => {
@@ -201,11 +197,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
   const dispatch = useAppDispatch(),
     [opacity, setPageView] = useState(''),
     { suggestions, setSuggestions } = useContext(SuggestionsContext),
-    [levelDonate, setLevelDonate] = useState({
-      value: 0,
-      submit: '',
-      class: '',
-    })
+    [levelDonate, setLevelDonate] = useState({ value: 0, submit: '', class: '' })
 
   const handleEpisodeCollectionView = (e: { target: any }) => {
     if (e.target.classList.contains('active')) return
@@ -229,7 +221,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
     [target.dataset.tab]?.classList.add('active')
   }
   const getAllSuggestions = useCallback(() => {
-    setSuggestions(dbSuggestions) // remove on production
+    return setSuggestions(dbSuggestions) // remove on production
     // axios.get('https://www.sandclock.org/api')
     //   .then(results => setSuggestions(results))
     //   .catch(() => dispatch(retrieveInfoModal()))
@@ -306,7 +298,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
     setTimeout(() => setPageView('active'))
     if (suggestions.length < 1) getAllSuggestions() // fetch results
     // if (Object.entries(suggestions).length === 0) getAllSuggestions()
-  }, [getAllSuggestions, suggestions.length])
+  }, [getAllSuggestions, suggestions])
   return (
     <div className={'fallback donatepage ' + opacity}>
       <header>
@@ -355,12 +347,12 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                   <div
                     className={'boxes ' + (index === 0 ? 'active' : '')}
                     key={obj.header}>
-                    <div className="individual" onClick={() => dispatch(ownFormStart())}>
+                    <div className="individual" onClick={() => dispatch(ownFormStartModal())}>
                       <h4>
                         Individual <br /> / <br /> Add Your Own
                       </h4>
                     </div>
-                    {obj.orgs.map((orgs) => (
+                    {obj.orgs.map(orgs => (
                       <div
                         className="episode"
                         key={orgs.title}
@@ -400,7 +392,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                   Yield
                 </p>
                 <div
-                  onClick={(e) => e.currentTarget.classList.toggle('active')}
+                  onClick={e => e.currentTarget.classList.toggle('active')}
                 />
                 <p data-tooltip="Choose this if you want to donate everything.">
                   Whole
@@ -414,8 +406,8 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
             <div className="allocation_container">
               {suggestions &&
                 suggestions.length > 0 &&
-                suggestions.map((obj) =>
-                  obj.orgs.map((orgs) => (
+                suggestions.map(obj =>
+                  obj.orgs.map(orgs => (
                     <div
                       key={orgs.title}
                       className="donate_item"
@@ -429,7 +421,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                           data-index={inputIndex++}
                           defaultValue=""
                           onInput={handleOnInputValue}
-                          onKeyPress={(e) => {
+                          onKeyPress={e => {
                             if (!/[0-9]/.test(e.key)) e.preventDefault()
                           }}
                           required
@@ -450,9 +442,6 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
         </div>
       </main>
       <Footer />
-      <Message />
-      <IndividualOwnForms />
-      <Mission />
     </div>
   )
 }
