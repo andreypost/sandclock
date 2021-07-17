@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Fund.styles.scss'
+import './Fund.scss'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'

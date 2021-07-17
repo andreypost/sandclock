@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
-import './Donate.styles.scss'
+import './Donate.scss'
 import { SuggestionsContext } from '../index'
 import axios from 'axios'
 import Nav from 'Nav'

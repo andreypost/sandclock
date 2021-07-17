@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Friends.styles.scss'
+import './Friends.scss'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
