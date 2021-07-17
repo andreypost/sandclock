@@ -14,10 +14,7 @@ const Footer: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
     const unsetState = (e: { key: string }) => {
-      if (e.key === 'Escape') {
-        dispatch(unsetMessageModal())
-        dispatch(unsetModal())
-      }
+      if (e.key === 'Escape') dispatch(unsetMessageModal()), dispatch(unsetModal())
     }
     document.addEventListener('keydown', e => unsetState(e))
     return document.removeEventListener('keydown', unsetState)
