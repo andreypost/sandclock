@@ -17,8 +17,13 @@ const Div = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   transition      : opacity .4s, z-index .1s .4s;
 
+  @media (orientation: landscape) {
+    height          : 100%;
+  }
+
   #individualStartForm,
   #individualSubmitForm {
+    transform    : scale(0);
     box-sizing   : border-box;
     width        : 90%;
     margin       : 15vh auto 0;
@@ -26,7 +31,6 @@ const Div = styled.div`
     border-radius: 30px;
     box-shadow   : 0px 16px 16px rgba(0, 0, 0, 0.25);
     background   : #fefaff;
-    transform    : scale(0);
     transition   : transform 0.6s;
   
     @media (min-width: 992px) {

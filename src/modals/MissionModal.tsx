@@ -17,6 +17,10 @@ const Div = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   transition      : opacity 0.4s, z-index 0.1s 0.4s;
 
+  @media (orientation: landscape) {
+    height          : 100%;
+  }
+
   >div {
     transform : scale(0);
     box-sizing: border-box;

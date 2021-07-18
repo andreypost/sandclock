@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from 'utils/hooks'
 import { unsetMessageModal, selectMessageModalValue } from './modal.slice'
 
 const Div = styled.div`
-
   opacity         : 0;
   position        : fixed;
   z-index         : -99;
@@ -15,6 +14,10 @@ const Div = styled.div`
   overflow        : auto;
   background-color: rgba(0, 0, 0, 0.2);
   transition      : opacity .4s, z-index .1s .4s;
+
+  @media (orientation: landscape) {
+    height          : 100%;
+  }
 
   article {
     transform    : scale(0);
