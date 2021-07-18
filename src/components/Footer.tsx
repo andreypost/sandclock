@@ -12,11 +12,15 @@ const Footer: React.FC = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     window.scrollTo(0, 0)
-    const unsetState = (e: { key: string }) => {
+    const unsetModalState = (e: { key: string }) => {
       if (e.key === 'Escape') dispatch(unsetModal()), dispatch(unsetMessageModal())
     }
-    document.addEventListener('keydown', e => unsetState(e))
-    return document.removeEventListener('keydown', unsetState)
+    document.addEventListener('keydown', e => unsetModalState(e))
+    return (
+      dispatch(unsetModal()),
+      dispatch(unsetMessageModal()),
+      document.removeEventListener('keydown', unsetModalState)
+    )
   }, [dispatch])
   return (
     <footer className="section footer">
