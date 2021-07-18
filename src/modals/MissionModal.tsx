@@ -93,7 +93,7 @@ const Div = styled.div`
     }
   }`
 
-const Mission = () => {
+const MissionModal = () => {
   const missionState = useAppSelector(selectModalActive),
     missionTitle = useAppSelector(selectModalTitle),
     missionType = useAppSelector(selectModalType),
@@ -120,4 +120,4 @@ const Mission = () => {
   )
 }
 
-export default Mission
+export default MissionModal

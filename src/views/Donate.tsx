@@ -5,10 +5,9 @@ import axios from 'axios'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
-import info_circle from 'svg/info_circle.svg'
 import { useAppDispatch } from 'utils/hooks'
-import { messageErrorModal, messageExceedModal, messageSentModal } from 'modals/message.modal.slice'
-import { missionTypeModal, ownFormStartModal } from 'modals/modal.slice'
+import { missionTypeModal, ownFormStartModal, messageErrorModal, messageExceedModal, messageSentModal } from 'modals/modal.slice'
+import info_circle from 'svg/info_circle.svg'
 
 // mock fetch server
 const dbSuggestions = JSON.parse(

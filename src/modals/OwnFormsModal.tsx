@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
-import { selectModalActive, ownFormStartModal, ownFormEndModal, unsetModal } from './modal.slice'
-import { messageTypeModal, messageFieldModal, messageSuccsessModal, messageErrorModal } from 'modals/message.modal.slice'
+import { selectModalActive, ownFormStartModal, ownFormEndModal, unsetModal, messageTypeModal, messageFieldModal, messageSuccsessModal, messageErrorModal } from './modal.slice'
 
 const Div = styled.div`
 
@@ -175,7 +174,7 @@ const Div = styled.div`
     }
   }`
 
-const IndividualOwnForms = () => {
+const OwnFormsModal = () => {
   const modalState = useAppSelector(selectModalActive),
     dispatch = useAppDispatch(),
     [typeOwnForm, setTypeOwnForm] = useState({
@@ -238,7 +237,7 @@ const IndividualOwnForms = () => {
         setMessageOwnForm('')
       })
       .catch(() => dispatch(messageErrorModal()))
-    // .finally(() => dispatch(unsetInfoModal())
+    // .finally(() => dispatch(unsetMessageModal())
   }
   return (
     <>
@@ -381,4 +380,4 @@ const IndividualOwnForms = () => {
   )
 }
 
-export default IndividualOwnForms
+export default OwnFormsModal

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Message from 'modals/Message'
-import IndividualOwnForms from 'modals/IndividualOwnForms'
-import Mission from 'modals/Mission'
-import { unsetMessageModal } from 'modals/message.modal.slice'
-import { unsetModal } from 'modals/modal.slice'
+import MessageModal from 'modals/MessageModal'
+import OwnFormsModal from 'modals/OwnFormsModal'
+import MissionModal from 'modals/MissionModal'
 import { useAppDispatch } from 'utils/hooks'
+import { unsetModal, unsetMessageModal } from 'modals/modal.slice'
 import crypto_ether from 'svg/crypto_ether.svg'
 import crypto_xdai from 'svg/crypto_xdai.svg'
 
@@ -14,7 +13,7 @@ const Footer: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
     const unsetState = (e: { key: string }) => {
-      if (e.key === 'Escape') dispatch(unsetMessageModal()), dispatch(unsetModal())
+      if (e.key === 'Escape') dispatch(unsetModal()), dispatch(unsetMessageModal())
     }
     document.addEventListener('keydown', e => unsetState(e))
     return document.removeEventListener('keydown', unsetState)
@@ -55,9 +54,9 @@ const Footer: React.FC = () => {
           </a>
         </p>
       </div>
-      <Message />
-      <IndividualOwnForms />
-      <Mission />
+      <MessageModal />
+      <OwnFormsModal />
+      <MissionModal />
     </footer>
   )
 }

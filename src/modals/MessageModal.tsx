@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
-import { unsetMessageModal, selectMessageValue } from './message.modal.slice'
+import { unsetMessageModal, selectMessageModalValue } from './modal.slice'
 
 const Div = styled.div`
 
@@ -65,9 +65,9 @@ const Div = styled.div`
     }
   }`
 
-const Message = () => {
-  const messageValue = useAppSelector(selectMessageValue),
-    messageState = useAppSelector((state) => state.messageModal.active),
+const MessageModal = () => {
+  const messageValue = useAppSelector(selectMessageModalValue),
+    messageState = useAppSelector(state => state.modal.messageActive),
     dispatch = useAppDispatch()
   return (
     <Div className={messageState} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetMessageModal()) }}>
@@ -79,4 +79,4 @@ const Message = () => {
   )
 }
 
-export default Message
+export default MessageModal
