@@ -28,7 +28,7 @@ const Div = styled.div`
     flex-flow: column;
     width        : 90%;
     min-height: 105px;
-    margin       : 30vh auto 0;
+    margin       : 30vh auto;
     padding: 20px 20px 10px;
     border-radius: 30px;
     box-shadow   : 0px 16px 16px rgba(0, 0, 0, 0.25);

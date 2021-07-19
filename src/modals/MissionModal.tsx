@@ -31,7 +31,7 @@ const Div = styled.div`
     width        : 90%;
     min-height   : 600px;
     padding      : 48px 48px 16px;
-    margin       : 15vh auto 0;
+    margin       : 15vh auto;
     border-radius: 30px;
     box-shadow   : 0px 16px 16px rgba(0, 0, 0, 0.25);
     background   : #fefaff;
