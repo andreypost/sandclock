@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Will.scss'
 import Nav from 'Nav'
 import Footer from 'Footer'
@@ -10,7 +10,7 @@ interface Options {
   commit: string
 }
 
-const Will: React.FC = (props, { data, commit }: Options) => {
+const Will = (props, { data, commit }: Options) => {
   // const [commits, setCommits] = useState<string[]>([]) // useState<Array<{ data: string, commit: string }>>([])
   const [opacity, setPageView] = useState(''),
     [basicText, setBasicText] = useState(''),

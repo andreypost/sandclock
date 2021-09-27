@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Friends.scss'
 import Nav from 'Nav'
 import Banner from 'Banner'
@@ -15,7 +15,7 @@ import part_superfluid from 'svg/part_superfluid.svg'
 import part_commons from 'svg/part_commons.svg'
 import part_xdai from 'svg/part_xdai.svg'
 
-const Friends: React.FC = () => {
+const Friends = () => {
   const [opacity, setPageView] = useState('')
   useEffect(() => {
     setTimeout(() => setPageView('active'))

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Nav from 'Nav'
 import Footer from 'Footer'
 
-const Sale: React.FC = () => {
+const Sale = () => {
   const [opacity, setPageView] = useState('')
   useEffect(() => {
     setTimeout(() => setPageView('active'))

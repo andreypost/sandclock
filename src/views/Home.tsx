@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.scss'
 import axios from 'axios'
@@ -29,7 +29,7 @@ import quiz_fund from 'svg/quiz_fund.svg'
 import quiz_donate from 'svg/quiz_donate.svg'
 import quiz_will from 'svg/quiz_will.svg'
 
-const Home: React.FC = () => {
+const Home = () => {
   const dispatch = useAppDispatch(),
     [opacity, setPageView] = useState(''),
     [email, setEmail] = useState(''),

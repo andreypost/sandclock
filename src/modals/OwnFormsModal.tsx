@@ -1,83 +1,90 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
-import { selectModalActive, ownFormStartModal, ownFormEndModal, unsetModal, messageTypeModal, messageFieldModal, messageSuccsessModal, messageErrorModal } from './modal.slice'
+import {
+  selectModalActive,
+  ownFormStartModal,
+  ownFormEndModal,
+  unsetModal,
+  messageTypeModal,
+  messageFieldModal,
+  messageSuccsessModal,
+  messageErrorModal,
+} from './modal.slice'
 
 const Div = styled.div`
-
-  opacity         : 0;
-  position        : fixed;
-  z-index         : -99;
-  left            : 0;
-  top             : 0;
-  width           : 100%;
-  height          : 200%;
-  overflow        : auto;
+  opacity: 0;
+  position: fixed;
+  z-index: -99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 200%;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.2);
-  transition      : opacity .4s, z-index .1s .4s;
+  transition: opacity 0.4s, z-index 0.1s 0.4s;
 
   @media (orientation: landscape) {
-    height          : 100%;
+    height: 100%;
   }
 
   #individualStartForm,
   #individualSubmitForm {
-    transform    : scale(0);
-    box-sizing   : border-box;
-    width        : 90%;
-    margin       : 15vh auto;
-    padding      : 92px 48px 30px;
+    transform: scale(0);
+    box-sizing: border-box;
+    width: 90%;
+    margin: 15vh auto;
+    padding: 92px 48px 30px;
     border-radius: 30px;
-    box-shadow   : 0px 16px 16px rgba(0, 0, 0, 0.25);
-    background   : #fefaff;
-    transition   : transform 0.6s;
-  
+    box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.25);
+    background: #fefaff;
+    transition: transform 0.6s;
+
     @media (min-width: 992px) {
       width: 601px;
     }
-  
+
     label {
-      display      : inline-block;
-      font-weight  : 700;
-      font-size    : 18px;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 18px;
       margin-bottom: 24px;
     }
-  
+
     input,
     textarea,
     button {
-      box-sizing   : border-box;
+      box-sizing: border-box;
       border-radius: 15px;
-      width      : 100%;
-      height     : 53px;
-      padding    : 0 24px;
-      font-size  : 18px;
+      width: 100%;
+      height: 53px;
+      padding: 0 24px;
+      font-size: 18px;
       font-weight: 700;
       margin-bottom: 24px;
-      border       : 1px solid #fff7cc;
-      box-shadow   : 4px 4px 4px rgba(0, 0, 0, 0.25);
-      background   : #ffffff;
-      transition   : all 0.2s;
-  
+      border: 1px solid #fff7cc;
+      box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+      background: #ffffff;
+      transition: all 0.2s;
+
       &::placeholder {
         font-weight: 400;
-        opacity    : 0.75;
+        opacity: 0.75;
       }
     }
 
     .goBack {
-      color     : #7f7d80;
+      color: #7f7d80;
       transition: color 0.4s;
-  
+
       @media (min-width: 992px) {
         &:hover {
           cursor: pointer;
-          color : #000000;
+          color: #000000;
         }
       }
     }
-
   }
   #individualStartForm {
     .individual_types {
@@ -85,17 +92,17 @@ const Div = styled.div`
         margin-bottom: 9px;
       }
 
-      >div {
-        display      : grid;
+      > div {
+        display: grid;
         grid-template: repeat(1, 1fr) / repeat(2, 1fr);
-        grid-gap     : 15px;
+        grid-gap: 15px;
 
         input {
           font-weight: 400;
 
           @media (min-width: 992px) {
             &:hover {
-              cursor    : pointer;
+              cursor: pointer;
               background: #fff7cc;
             }
           }
@@ -116,9 +123,9 @@ const Div = styled.div`
     }
 
     .individual_city {
-      display      : grid;
+      display: grid;
       grid-template: repeat(1, 1fr) / repeat(3, 1fr);
-      grid-gap     : 25px;
+      grid-gap: 25px;
 
       input {
         text-align: center;
@@ -126,37 +133,37 @@ const Div = styled.div`
 
       input[name='state'] {
         padding-right: 52px;
-        background   : url(svg/arrow_placeholder.svg) no-repeat 90% center;
+        background: url(svg/arrow_placeholder.svg) no-repeat 90% center;
       }
     }
 
     button {
-      display   : block;
-      width     : 195px;
-      margin    : auto;
-      font-size : 24px;
+      display: block;
+      width: 195px;
+      margin: auto;
+      font-size: 24px;
       background: linear-gradient(90deg, #ffd7d7 0%, #feffdf 100%);
     }
   }
 
   #individualSubmitForm {
     textarea {
-      height : 104px;
+      height: 104px;
       padding: 24px;
     }
 
-    >div {
-      display              : grid;
+    > div {
+      display: grid;
       grid-template-columns: 95px 195px;
-      grid-gap             : 15px;
-      justify-content      : center;
+      grid-gap: 15px;
+      justify-content: center;
 
       input,
       button {
-        width      : 100% !important;
-        font-size  : 24px;
+        width: 100% !important;
+        font-size: 24px;
         font-weight: 400;
-        background : linear-gradient(90deg, #ffd7d7 0%, #feffdf 100%);
+        background: linear-gradient(90deg, #ffd7d7 0%, #feffdf 100%);
 
         @media (min-width: 992px) {
           &:hover {
@@ -167,16 +174,18 @@ const Div = styled.div`
     }
   }
 
-  &.ownStartActive.startForm, &.ownEndActive.endForm  {
-    z-index   : 999;
-    opacity   : 1;
-    transition: z-index .1s, opacity .4s .1s;
+  &.ownStartActive.startForm,
+  &.ownEndActive.endForm {
+    z-index: 999;
+    opacity: 1;
+    transition: z-index 0.1s, opacity 0.4s 0.1s;
 
     #individualStartForm,
     #individualSubmitForm {
       transform: scale(1);
     }
-  }`
+  }
+`
 
 const OwnFormsModal = () => {
   const modalState = useAppSelector(selectModalActive),
@@ -245,7 +254,12 @@ const OwnFormsModal = () => {
   }
   return (
     <>
-      <Div className={modalState + ' startForm'} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
+      <Div
+        className={modalState + ' startForm'}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) dispatch(unsetModal())
+        }}
+      >
         <form action="" id="individualStartForm" onSubmit={handleOwnTypeForm}>
           <label htmlFor="name">Recipient’s name</label>
           <input
@@ -255,7 +269,7 @@ const OwnFormsModal = () => {
             value={nameOwnForm}
             placeholder="Name Surname"
             pattern="[A-Za-z]{2,}\s[A-Za-z]{2,}"
-            onChange={e => setNameOwnForm(e.target.value)}
+            onChange={(e) => setNameOwnForm(e.target.value)}
             autoComplete="off"
             required
           />
@@ -295,7 +309,7 @@ const OwnFormsModal = () => {
             id="address"
             placeholder="Street"
             value={addressOwnForm}
-            onChange={e => setAddressOwnForm(e.target.value)}
+            onChange={(e) => setAddressOwnForm(e.target.value)}
             autoComplete="off"
           />
           <div className="individual_city">
@@ -305,7 +319,7 @@ const OwnFormsModal = () => {
               id="city"
               placeholder="City"
               value={cityOwnForm}
-              onChange={e => setCityOwnForm(e.target.value)}
+              onChange={(e) => setCityOwnForm(e.target.value)}
               autoComplete="off"
             />
             <input
@@ -314,7 +328,7 @@ const OwnFormsModal = () => {
               id="state"
               placeholder="State"
               value={stateOwnForm}
-              onChange={e => setStateOwnForm(e.target.value)}
+              onChange={(e) => setStateOwnForm(e.target.value)}
               autoComplete="off"
             />
             <input
@@ -323,14 +337,21 @@ const OwnFormsModal = () => {
               id="code"
               placeholder="Zip Code"
               value={codeOwnForm}
-              onChange={e => setCodeOwnForm(e.target.value)}
+              onChange={(e) => setCodeOwnForm(e.target.value)}
               autoComplete="off"
             />
           </div>
-          <button type="submit" form="individualStartForm">→</button>
+          <button type="submit" form="individualStartForm">
+            →
+          </button>
         </form>
       </Div>
-      <Div className={modalState + ' endForm'} onClick={e => { if (e.target === e.currentTarget) dispatch(unsetModal()) }}>
+      <Div
+        className={modalState + ' endForm'}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) dispatch(unsetModal())
+        }}
+      >
         <form
           action=""
           id="individualSubmitForm"
@@ -343,7 +364,7 @@ const OwnFormsModal = () => {
             id="email"
             value={emailOwnForm}
             placeholder="email@com.net"
-            onChange={e => setEmailOwnForm(e.target.value)}
+            onChange={(e) => setEmailOwnForm(e.target.value)}
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             autoComplete="off"
           />
@@ -355,7 +376,7 @@ const OwnFormsModal = () => {
             value={einOwnForm}
             placeholder="XX-XXXXXXX"
             pattern="[0-9]{2}-[0-9]{8,}"
-            onChange={e => setEinOwnForm(e.target.value)}
+            onChange={(e) => setEinOwnForm(e.target.value)}
             autoComplete="off"
           />
           <label htmlFor="message">
@@ -365,7 +386,7 @@ const OwnFormsModal = () => {
             name="message"
             id="message"
             value={messageOwnForm}
-            onChange={e => setMessageOwnForm(e.target.value)}
+            onChange={(e) => setMessageOwnForm(e.target.value)}
             autoComplete="off"
           ></textarea>
           <div>

@@ -1,4 +1,3 @@
-import React from 'react'
 // import React, { ReactNode } from 'react
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
     // actions?: ReactNode
   }
 }
-const Profiles: React.FC<Props> = ({ children }: Props) => (
+const Profiles = ({ children }: Props) => (
   <div>
     <p className="aum">
       <span>{children.aum}</span>

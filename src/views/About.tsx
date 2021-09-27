@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './About.scss'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
 import arrow from 'svg/arrow.svg'
 
-const About: React.FC = () => {
+const About = () => {
   const [opacity, setPageView] = useState('')
   useEffect(() => {
     setTimeout(() => setPageView('active'))
@@ -43,7 +43,7 @@ const About: React.FC = () => {
           <h2>FAQ</h2>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -62,7 +62,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -88,7 +88,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -114,7 +114,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -147,7 +147,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -162,7 +162,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -185,7 +185,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -209,7 +209,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >
@@ -228,7 +228,7 @@ const About: React.FC = () => {
           </article>
           <article>
             <h6
-              onClick={e =>
+              onClick={(e) =>
                 e.currentTarget.closest('article')?.classList.toggle('active')
               }
             >

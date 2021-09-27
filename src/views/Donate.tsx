@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react'
 import './Donate.scss'
 import { SuggestionsContext } from '../index'
 import axios from 'axios'
@@ -6,7 +6,13 @@ import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
 import { useAppDispatch } from 'utils/hooks'
-import { missionTypeModal, ownFormStartModal, messageErrorModal, messageExceedModal, messageSentModal } from 'modals/modal.slice'
+import {
+  missionTypeModal,
+  ownFormStartModal,
+  messageErrorModal,
+  messageExceedModal,
+  messageSentModal,
+} from 'modals/modal.slice'
 import info_circle from 'svg/info_circle.svg'
 
 // mock fetch server
@@ -192,11 +198,15 @@ interface Options {
 }
 
 // const Donate: React.FC<Props> = ({ suggestions, setSuggestions }: Props, { boxIndex = 0, inputIndex = 0}: Options) => {
-const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) => {
+const Donate = ({ boxIndex = 0, inputIndex = 0 }: Options) => {
   const dispatch = useAppDispatch(),
     [opacity, setPageView] = useState(''),
     { suggestions, setSuggestions } = useContext(SuggestionsContext),
-    [levelDonate, setLevelDonate] = useState({ value: 0, submit: '', class: '' })
+    [levelDonate, setLevelDonate] = useState({
+      value: 0,
+      submit: '',
+      class: '',
+    })
 
   const handleEpisodeCollectionView = (e: { target: any }) => {
     if (e.target.classList.contains('active')) return
@@ -217,7 +227,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
         'px'
     document
       .querySelectorAll<HTMLDivElement>('.orgs_container .boxes')
-    [target.dataset.tab]?.classList.add('active')
+      [target.dataset.tab]?.classList.add('active')
   }
   const getAllSuggestions = useCallback(() => {
     return setSuggestions(dbSuggestions) // remove on production
@@ -345,13 +355,17 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                 suggestions.map((obj, index) => (
                   <div
                     className={'boxes ' + (index === 0 ? 'active' : '')}
-                    key={obj.header}>
-                    <div className="individual" onClick={() => dispatch(ownFormStartModal())}>
+                    key={obj.header}
+                  >
+                    <div
+                      className="individual"
+                      onClick={() => dispatch(ownFormStartModal())}
+                    >
                       <h4>
                         Individual <br /> / <br /> Add Your Own
                       </h4>
                     </div>
-                    {obj.orgs.map(orgs => (
+                    {obj.orgs.map((orgs) => (
                       <div
                         className="episode"
                         key={orgs.title}
@@ -365,9 +379,18 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                           src={info_circle}
                           alt=""
                           className="info"
-                          onClick={e => {
-                            const episode = e.currentTarget.closest<HTMLDivElement>('.episode')
-                            dispatch(missionTypeModal({ title: episode?.dataset.title, type: episode?.dataset.type, mission: episode?.dataset.mission }))
+                          onClick={(e) => {
+                            const episode =
+                              e.currentTarget.closest<HTMLDivElement>(
+                                '.episode',
+                              )
+                            dispatch(
+                              missionTypeModal({
+                                title: episode?.dataset.title,
+                                type: episode?.dataset.type,
+                                mission: episode?.dataset.mission,
+                              }),
+                            )
                           }}
                         />
                         <h4>{orgs.title}</h4>
@@ -391,7 +414,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                   Yield
                 </p>
                 <div
-                  onClick={e => e.currentTarget.classList.toggle('active')}
+                  onClick={(e) => e.currentTarget.classList.toggle('active')}
                 />
                 <p data-tooltip="Choose this if you want to donate everything.">
                   Whole
@@ -405,8 +428,8 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
             <div className="allocation_container">
               {suggestions &&
                 suggestions.length > 0 &&
-                suggestions.map(obj =>
-                  obj.orgs.map(orgs => (
+                suggestions.map((obj) =>
+                  obj.orgs.map((orgs) => (
                     <div
                       key={orgs.title}
                       className="donate_item"
@@ -420,7 +443,7 @@ const Donate: React.FC<Options> = ({ boxIndex = 0, inputIndex = 0 }: Options) =>
                           data-index={inputIndex++}
                           defaultValue=""
                           onInput={handleOnInputValue}
-                          onKeyPress={e => {
+                          onKeyPress={(e) => {
                             if (!/[0-9]/.test(e.key)) e.preventDefault()
                           }}
                           required

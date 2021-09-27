@@ -1,4 +1,4 @@
-import React, { createContext, useState, Suspense, lazy } from 'react'
+import { createContext, useState, Suspense, lazy } from 'react'
 import ReactDom from 'react-dom'
 import './styles/normalize.css'
 import './styles/common.scss'
@@ -8,11 +8,11 @@ import Spinner from 'Spinner'
 // import './i18n'
 
 interface SCProps {
-    suggestions: Array<{
-        header: string
-        orgs: [{ title: string; type: string; mission: string }]
-    }>
-    setSuggestions: (arg0: any) => void
+  suggestions: Array<{
+    header: string
+    orgs: [{ title: string; type: string; mission: string }]
+  }>
+  setSuggestions: (arg0: any) => void
 }
 
 export const SuggestionsContext = createContext({} as SCProps)
@@ -23,17 +23,17 @@ export const SuggestionsContext = createContext({} as SCProps)
 
 const AppRouter = lazy(() => import('./AppRouter'))
 
-const App: React.FC = () => {
-    const [suggestions, setSuggestions] = useState([])
-    return (
-        <Suspense fallback={<Spinner />}>
-            <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
-                <Provider store={store}>
-                    <AppRouter />
-                </Provider>
-            </SuggestionsContext.Provider>
-        </Suspense>
-    )
+const App = () => {
+  const [suggestions, setSuggestions] = useState([])
+  return (
+    <Suspense fallback={<Spinner />}>
+      <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
+      </SuggestionsContext.Provider>
+    </Suspense>
+  )
 }
 
 //func for svg to load as sprites in index.html and use them in components -> <svg><use xlinkHref={arrow}></use></svg>

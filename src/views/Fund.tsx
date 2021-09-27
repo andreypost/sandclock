@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Fund.scss'
 import Nav from 'Nav'
 import Banner from 'Banner'
@@ -9,7 +9,7 @@ import link from 'svg/link.svg'
 import risk_yearn from 'svg/risk_yearn.svg'
 import risk_mph from 'svg/risk_mph.svg'
 
-const Fund: React.FC = () => {
+const Fund = () => {
   const [opacity, setPageView] = useState('')
   useEffect(() => {
     setTimeout(() => setPageView('active'))

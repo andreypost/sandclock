@@ -1,8 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from 'svg/logo.svg'
 
-const Nav: React.FC = () => (
+const Nav = () => (
   <nav>
     <div className="section">
       <Link to="/" className="logo">

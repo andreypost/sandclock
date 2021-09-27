@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Faq.scss'
 import Nav from 'Nav'
 import Banner from 'Banner'
 import Footer from 'Footer'
 
-const Faq: React.FC = () => {
+const Faq = () => {
   const [opacity, setPageView] = useState('')
   useEffect(() => {
     setTimeout(() => setPageView('active'))
